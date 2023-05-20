@@ -26,7 +26,6 @@ public class InscripcionData {
     public void inscribirAlumno(Alumno alumno, Materia materia, Inscripcion inscripcion){
         String query =  "INSERT INTO inscripcion (nota, id_alumno, id_materia) " + 
                         "VALUES (?, ?, ?)";
-        
         try{
             PreparedStatement stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
             stmt.setDouble(1, inscripcion.getNota() );
