@@ -1,30 +1,150 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vistas;
-import java.awt.Color;
+
+import Modelo.Login;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-/**
- *
- * @author Lenovo
- */
-public class Menu extends javax.swing.JFrame {
+import javax.swing.*;
 
-    /**
-     * Creates new form Menu
-     */
+public class Menu extends javax.swing.JFrame  {
+    
+    private JMenuBar barra;
+    private JMenu Menu_Alumnos, Menu_Materias, Menu_Salir;
+    private JMenuItem A_opcion1, A_opcion2, A_opcion3, M_opcion1, M_opcion2, M_opcion3, M_opcion4, M_opcion5, S_opcion1;
+    
     public Menu() {
+        crearMenu();
         initComponents();
+        label_usuarioSesion.setText("Usuario: " + Login.getUsuario_login());
     }
+  
+    private void crearMenu(){
+        barra = new JMenuBar();
+        
+        Menu_Alumnos = new JMenu("Alumnos");
+        Menu_Materias = new JMenu("Materias");
+        Menu_Salir = new JMenu("Salir");
+        
+        //Menu Alumnos
+        A_opcion1 = new JMenuItem("Punto 1 _ Lista Alumnos");
+        A_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ListaAlumnos listaAlumnos = new ListaAlumnos();
+            listaAlumnos.setVisible(true);
+            escritorio.add(listaAlumnos);
+            escritorio.moveToBack(listaAlumnos);
+        });
+        
+        A_opcion2 = new JMenuItem("Lista Materias Inscriptos");
+        A_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            InscripcionesAlumnos inscripcionesAlumnos = new InscripcionesAlumnos();
+            inscripcionesAlumnos.setVisible(true);
+            escritorio.add(inscripcionesAlumnos);
+            escritorio.moveToFront(inscripcionesAlumnos);
+        });
+        
+        A_opcion3 = new JMenuItem("ABM Alumnos");
+        A_opcion3.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ABMAlumnos abmAlumnos = new ABMAlumnos();
+            abmAlumnos.setVisible(true);
+            escritorio.add(abmAlumnos);
+            escritorio.moveToFront(abmAlumnos);
+        });
+        
+        //Menu Materias
+        M_opcion1 = new JMenuItem("Punto 2 _ Lista Materias");
+        M_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ListaMaterias listaMaterias = new ListaMaterias();
+            listaMaterias.setVisible(true);
+            escritorio.add(listaMaterias);
+            escritorio.moveToFront(listaMaterias);
+        });
+        
+        M_opcion2 = new JMenuItem("Lista de inscripciones");
+        M_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ListaMateriasInscripto listaMateriasIns = new ListaMateriasInscripto();
+            listaMateriasIns.setVisible(true);
+            escritorio.add(listaMateriasIns);
+            escritorio.moveToFront(listaMateriasIns);
+        });
+        
+        M_opcion3 = new JMenuItem("ABM Materias");
+        M_opcion3.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ABMMaterias abmMaterias = new ABMMaterias();
+            abmMaterias.setVisible(true);
+            escritorio.add(abmMaterias);
+            escritorio.moveToFront(abmMaterias);
+        });
+        
+        M_opcion4 = new JMenuItem("Inscribir Alumnos");
+        M_opcion4.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            ListaInscripciones listaInscripciones = new ListaInscripciones();
+            listaInscripciones.setVisible(true);
+            escritorio.add(listaInscripciones);
+            escritorio.moveToFront(listaInscripciones);
+        });
+        
+        M_opcion5 = new JMenuItem("Calificaciones");
+        M_opcion5.addActionListener((java.awt.event.ActionEvent evt) -> {
+            escritorio.removeAll();
+            escritorio.repaint();
+            Calificaciones calificaciones = new Calificaciones();
+            calificaciones.setVisible(true);
+            escritorio.add(calificaciones);
+            escritorio.moveToFront(calificaciones);
+        });
+        
+        //Menu Salir
+        S_opcion1 = new JMenuItem("Salir del sistema");
+        S_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
+            System.exit(0);
+        });
+        
+        if ( Login.getUsuario_login().equals("alumno")){
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+            Menu_Alumnos.add(A_opcion1);
+            Menu_Alumnos.add(A_opcion2);
+            Menu_Alumnos.add(A_opcion3);
+            Menu_Salir.add(S_opcion1);
+        
+            barra.add(Menu_Alumnos);
+            barra.add(Menu_Salir);
+        }
+        
+        if ( Login.getUsuario_login().equals("cristians")){
+
+            Menu_Alumnos.add(A_opcion1);
+            Menu_Alumnos.add(A_opcion2);
+            Menu_Alumnos.add(A_opcion3);
+            Menu_Materias.add(M_opcion1);
+            Menu_Materias.add(M_opcion2);
+            Menu_Materias.add(M_opcion3);
+            Menu_Materias.add(M_opcion4);
+            Menu_Materias.add(M_opcion5);
+            Menu_Salir.add(S_opcion1);
+        
+            barra.add(Menu_Alumnos);
+            barra.add(Menu_Materias);
+            barra.add(Menu_Salir);
+        }
+        
+        
+        setJMenuBar(barra);
+    }
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,95 +158,63 @@ public class Menu extends javax.swing.JFrame {
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        btnPrueba_usuario = new javax.swing.JButton();
+        btnPrueba_rol = new javax.swing.JButton();
+        label_usuarioSesion = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnPrueba_usuario.setText("Usuario");
+        btnPrueba_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrueba_usuarioActionPerformed(evt);
+            }
+        });
+
+        btnPrueba_rol.setText("rol");
+        btnPrueba_rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrueba_rolActionPerformed(evt);
+            }
+        });
+
+        label_usuarioSesion.setText("jLabel1");
+
+        escritorio.setLayer(btnPrueba_usuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(btnPrueba_rol, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(label_usuarioSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(btnPrueba_usuario)
+                .addGap(216, 216, 216)
+                .addComponent(btnPrueba_rol)
+                .addContainerGap(669, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_usuarioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(btnPrueba_usuario))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(label_usuarioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149)
+                        .addComponent(btnPrueba_rol)))
+                .addContainerGap(526, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("Alumnos");
-
-        jMenuItem1.setText("Lista Alumnos_punto1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Lista Materia_Inscripto_púnto1");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("ABM Alumno_punto5");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu3.setText("Materias");
-
-        jMenuItem7.setText("Lista Materias_punto2");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem7);
-
-        jMenuItem6.setText("Lista Inscripciones_punto2");
-        jMenu3.add(jMenuItem6);
-
-        jMenuItem8.setText("ABM Materia_punto5");
-        jMenu3.add(jMenuItem8);
-
-        jMenuItem9.setText("Inscribir Alumnos_punto3");
-        jMenu3.add(jMenuItem9);
-
-        jMenuItem10.setText("Califcaciones_punto4");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem10);
-
-        jMenuBar1.add(jMenu3);
-
-        jMenu2.setText("Salir");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,29 +230,14 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void btnPrueba_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrueba_usuarioActionPerformed
+        JOptionPane.showMessageDialog ( null, "usuario: " + Login.getUsuario_login() , "Error de ejecucion", JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_btnPrueba_usuarioActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+    private void btnPrueba_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrueba_rolActionPerformed
+        JOptionPane.showMessageDialog ( null, "rol: " + Login.getUsuario_login() , "Error de ejecucion", JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_btnPrueba_rolActionPerformed
+      
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -190,28 +263,18 @@ public class Menu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Menu().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPrueba_rol;
+    private javax.swing.JButton btnPrueba_usuario;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label_usuarioSesion;
     // End of variables declaration//GEN-END:variables
+   
 }
