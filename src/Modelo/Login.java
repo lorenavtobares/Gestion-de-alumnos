@@ -24,7 +24,8 @@ public class Login {
        try{
             String query =  "SELECT * FROM usuarios " +
                             "WHERE usuario = ? " +
-                            "AND contrasenia = ?";
+                            "AND contrasenia = ? " + 
+                            "LIMIT 1";
             
             PreparedStatement stmt = con.prepareStatement( query);
             stmt.setString( 1, usuario.getText() );
