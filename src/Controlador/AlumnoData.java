@@ -4,178 +4,227 @@ import Conexion.Conexion;
 import Modelo.Alumno;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AlumnoData {
 
     private final Connection con;
+    private static List<Alumno> list_alumnos = new ArrayList<Alumno>();
     
     public AlumnoData(){
         con = Conexion.getConexion();
     }
 
     public void guardarAlumno( Alumno alumno ){
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
         
         String query    = "INSERT INTO alumno "
                         + "(dni, apellido, nombre, fecha_nacimiento, estado) "
                         + "VALUES (?, ?, ?, ?, 1)";
         
-        try{
-            PreparedStatement stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
+        try
+        {
+            stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
             stmt.setInt( 1, alumno.getDni() );
             stmt.setString( 2, alumno.getApellido() );
             stmt.setString( 3, alumno.getNombre() );
             stmt.setDate( 4, Date.valueOf( alumno.getFecha_nacimiento() ) );
             
             stmt.executeUpdate();
-            ResultSet resultado = stmt.getGeneratedKeys();
+            resultado = stmt.getGeneratedKeys();
             
-            if( resultado.next() ) {
-                alumno.setId_alumno(resultado.getInt( 1 )); 
-            }           
-            
-            JOptionPane.showMessageDialog(null, "Alumno guardado con exito");
+            if( resultado.next() ) 
+            {
+                alumno.setId_alumno(resultado.getInt( 1 ));
+            }
+            JOptionPane.showMessageDialog(null, "Alumno guardado con exito", "" ,JOptionPane.INFORMATION_MESSAGE );
         }
-        catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR al guardar el Alumno: " + ex.getMessage() );
+        catch ( SQLException ex )
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(),"Error al guardar Alumno", JOptionPane.ERROR_MESSAGE );
         }
-
-    }//.guardarAlumno()
+        finally {
+            try { 
+                resultado.close(); 
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+        
+    } // .guardarAlumno()
     
     public void actualizarAlumno ( Alumno alumno ){
+        PreparedStatement stmt = null;
         
-        String query =  "UPDATE alumno " + 
-                        "SET dni = ?, apellido = ? , nombre = ? , fecha_nacimiento = ?  " + 
-                        "WHERE id_alumno = ?";
+        String query    = "UPDATE alumno "
+                        + "SET dni = ?, apellido = ? , nombre = ? , fecha_nacimiento = ?  "
+                        + "WHERE id_alumno = ?";
         
-        try{
-            PreparedStatement stmt = con.prepareStatement( query );
+        try
+        {
+            stmt = con.prepareStatement( query );
             stmt.setInt( 1, alumno.getDni() );
             stmt.setString( 2, alumno.getApellido() );
             stmt.setString( 3, alumno.getNombre() );
             stmt.setDate( 4, Date.valueOf( alumno.getFecha_nacimiento() ) );
             stmt.setInt( 5, alumno.getId_alumno() );
             
-            stmt.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Registro actualizado.");
-            stmt.close();
+            stmt.executeUpdate();           
+            JOptionPane.showMessageDialog(null, "Registro actualizado"," ",JOptionPane.INFORMATION_MESSAGE);
         }
-        catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR al actualizar registro: " + ex.getMessage() );
+        catch ( SQLException ex )
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), " ", JOptionPane.ERROR_MESSAGE );
+        }
+        finally {
+            try { 
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
     }//.actualizarAlumno()
     
-    public Alumno buscarAlumno ( int id_alumno ){
+    public Alumno buscarAlumno ( int idAlumno ){
         Alumno alumnoN = null;
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
         
-        String query =  "SELECT dni, apellido, nombre, fecha_nacimiento, estado " + 
-                        "FROM alumno " + 
-                        "WHERE id_alumno = ?";
+        String query    = "SELECT dni, apellido, nombre, fecha_nacimiento, estado "
+                        + "FROM alumno "
+                        + "WHERE id_alumno = ?";
         
-        try{
-            PreparedStatement stmt = con.prepareStatement( query );
-            stmt.setInt( 1, id_alumno );
+        try
+        {
+            stmt = con.prepareStatement( query );
+            stmt.setInt( 1, idAlumno );
+            resultado = stmt.executeQuery();
             
-            ResultSet resultado = stmt.executeQuery();
-            
-            if( resultado.next() ){
+            if( resultado.next() )
+            {
                 alumnoN = new Alumno();
-                alumnoN.setId_alumno( id_alumno );
+                alumnoN.setId_alumno( idAlumno );
                 alumnoN.setDni(resultado.getInt("dni"));
                 alumnoN.setApellido(resultado.getString("apellido"));
                 alumnoN.setNombre(resultado.getString("nombre"));
                 alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());
                 alumnoN.setEstado(resultado.getBoolean("estado"));
-                
-                //String estado = ( resultado.getBoolean("estado") != false ) ? "Habilitado" : "Deshabilitado";               
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro el alumno solicitado.");
-                System.out.println("No se encontro el alumno solicitado.");
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "No se encontro el alumno solicitado.", "ERROR",JOptionPane.ERROR_MESSAGE);
             }
-            
-            stmt.close();
         }
-        catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR al buscar alumno: " + ex.getMessage() );
-            Logger.getLogger( AlumnoData.class.getName() ).log( Level.SEVERE, null, ex );
+        catch ( SQLException ex )
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), "" , JOptionPane.ERROR_MESSAGE );
+        }
+        finally {
+            try { 
+                resultado.close(); 
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
         
         return alumnoN;
     }//.buscarAlumno()
     
-    public void eliminarAlumno ( int id_alumno ){
-        try{
-            String query =  "UPDATE alumno " + 
-                            "SET estado = false " + 
-                            "WHERE id_alumno = ?";
+    public void eliminarAlumno ( int idAlumno ){
+        PreparedStatement stmt = null;
+
+        String query    = "UPDATE alumno "
+                        + "SET estado = false "
+                        + "WHERE id_alumno = ?";
+        
+        try
+        {
+            stmt = con.prepareStatement ( query );
+            stmt.setInt ( 1 , idAlumno );
             
-            PreparedStatement stmt = con.prepareStatement( query );
-            stmt.setInt( 1, id_alumno);
-            
-            if(stmt.executeUpdate() > 0){
-                System.out.println("Registro de alumno eliminado.");
-            }else{
-                System.out.println("ID ingresado incorrecto.");
+            if(stmt.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog( null, "Registro eliminado"  + " " + JOptionPane.INFORMATION_MESSAGE );
+            } else {
+                JOptionPane.showMessageDialog( null, "ID ingresado incorrecto"  + " " + JOptionPane.ERROR_MESSAGE );
             }
-            stmt.close();            
         }
-        catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
+        catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() + " " + JOptionPane.ERROR_MESSAGE );
         }
+        
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+
     }//.eliminarAlumno()
     
-    public void habilitarAlumno ( int id_alumno ){
+    public void habilitarAlumno ( int idAlumno ){
+        PreparedStatement stmt = null;
+        
+        String query    = "UPDATE alumno "
+                        + "SET estado = true "
+                        + "WHERE id_alumno = ?";
+        
         try{
-            String query =  "UPDATE alumno " +
-                            "SET estado = true " +
-                            "WHERE id_alumno = ?";
-            
-            PreparedStatement stmt = con.prepareStatement( query );
-            stmt.setInt( 1, id_alumno);
+            stmt = con.prepareStatement( query );
+            stmt.setInt( 1, idAlumno );
             
             if(stmt.executeUpdate() > 0){
-                System.out.println("Alumno habilitado.");
+                JOptionPane.showMessageDialog( null, "Alumno habilitado"  + " " + JOptionPane.INFORMATION_MESSAGE );
             }else{
-                System.out.println("ID ingresado incorrecto.");
+                JOptionPane.showMessageDialog( null, "ID ingresado incorrecto"  + " " + JOptionPane.ERROR_MESSAGE );
             }
-            stmt.close();            
         }
         catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), "" , JOptionPane.ERROR_MESSAGE );
         }
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+        
     }//.habilitarAlumno()
    
-    public ArrayList<Alumno> listarHabilitados ( ){
-        ArrayList array_alumnos = new ArrayList();
+    public List <Alumno> listarHabilitados ( ) {
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
         
-        String query =  "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento " + 
-                        "FROM alumno " + 
-                        "WHERE estado = 1";
+        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+                        + "FROM alumno "
+                        + "WHERE estado = 1";
         
-        try{
-            PreparedStatement stmt = con.prepareStatement( query );
-            ResultSet resultado = stmt.executeQuery();
+        try
+        {
+            stmt = con.prepareStatement( query );
+            resultado = stmt.executeQuery();
             
-            while ( resultado.next() ) {
+            while ( resultado.next() ) 
+            {
                 Alumno alumnoN = new Alumno();
                 alumnoN.setId_alumno( resultado.getInt("id_alumno"));
                 alumnoN.setDni(resultado.getInt("dni"));
                 alumnoN.setApellido(resultado.getString("apellido"));
                 alumnoN.setNombre(resultado.getString("nombre"));
-                alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());
-                
-                array_alumnos.add(alumnoN);
-            }
-            
-            stmt.close();
+                alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());    
+                list_alumnos.add(alumnoN);
+            }   
         }
-        catch ( SQLException ex ){
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
+        catch ( SQLException ex ) 
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "" , JOptionPane.ERROR_MESSAGE);
+        }
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
         
-        return array_alumnos;
+        return list_alumnos;
     }
 }

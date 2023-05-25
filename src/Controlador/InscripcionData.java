@@ -9,21 +9,21 @@ import javax.swing.JOptionPane;
 
 public class InscripcionData {
     private final Connection con;
+    private static Alumno alumno = new Alumno();
+    private static AlumnoData alumnoData = new AlumnoData();
+    private static Materia materia = new Materia();
+    private static MateriaData materiaData = new MateriaData();
     
     public InscripcionData (){
         con = Conexion.getConexion();
     }
 
     private Alumno regenerarAlumno ( int idAlumno ){
-        Alumno alumno = new Alumno();
-        AlumnoData alumnoData = new AlumnoData();
         alumno = alumnoData.buscarAlumno(idAlumno);
         return alumno;
     }
     
     private Materia regenerarMateria ( int idMateria ){
-        Materia materia = new Materia();
-        MateriaData materiaData = new MateriaData();
         materia = materiaData.buscarMateria(idMateria);
         return materia;
     }
@@ -50,22 +50,16 @@ public class InscripcionData {
             {
                 inscripcion.setId_inscripto( resultado.getInt( 1 ) );
             }
-            JOptionPane.showMessageDialog( null, "Inscripcion realizada con exito." );
+            JOptionPane.showMessageDialog( null, "Inscripcion realizada con exito." , "", JOptionPane.INFORMATION_MESSAGE);
         } 
-        catch ( SQLException ex ) 
-        {
-            JOptionPane.showMessageDialog( null, "ERROR DB: " + ex.getMessage() );
-        } 
-        finally 
-        {
-            try 
-            {
+        catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try{
                 resultado.close();
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() );
             }
         }
         
@@ -104,27 +98,21 @@ public class InscripcionData {
                 System.out.println();
             }
             System.out.println("\n-------------------------------------------------------------------------------------");
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() ,"" , JOptionPane.ERROR_MESSAGE);
         }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() );
-        }
-        finally 
-        {
-            try 
-            {
+        finally {
+            try {
                 resultado.close();
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() ,"" , JOptionPane.ERROR_MESSAGE);
             }
         }
         
     } // listarInscripciones()
     
-    public void buscarInscripcionesIDUsuario ( int id_alumno ) {
+    public void buscarInscripcionesIDUsuario ( int idAlumno ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         
@@ -140,8 +128,8 @@ public class InscripcionData {
         try
         {    
             stmt = con.prepareStatement( query );
-            stmt.setInt( 1, id_alumno );
-            stmt.setInt( 2, id_alumno );
+            stmt.setInt( 1, idAlumno );
+            stmt.setInt( 2, idAlumno );
             resultado = stmt.executeQuery();
             
             System.out.println("\n-------------------------------------------------------------------------------------");
@@ -160,27 +148,21 @@ public class InscripcionData {
             }
             System.out.println("\n-------------------------------------------------------------------------------------");
             
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
         }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
-        }
-        finally 
-        {
-            try 
-            {
+        finally {
+            try {
                 resultado.close();
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch ( SQLException ex ) {
+                JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
             }
         }
     
     } //buscarInscripcionID ()
        
-    public void buscarInscripcionIDMateria ( int id_materia ) {
+    public void buscarInscripcionIDMateria ( int idMateria ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         
@@ -196,7 +178,7 @@ public class InscripcionData {
         try
         {
             stmt = con.prepareStatement( query );
-            stmt.setInt( 1, id_materia );
+            stmt.setInt( 1, idMateria );
 
             resultado = stmt.executeQuery();
             
@@ -216,21 +198,14 @@ public class InscripcionData {
             }
             System.out.println("\n-------------------------------------------------------------------------------------");
             
-        }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() );
-        }
-        finally 
-        {
-            try 
-            {
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        } finally  {
+            try  {
                 resultado.close();
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
             }
         }
     
@@ -240,9 +215,10 @@ public class InscripcionData {
         List <Inscripcion> listaInscripciones = new ArrayList <Inscripcion> ();
         PreparedStatement stmt = null;  
         ResultSet resultado = null;
+        String query =  "SELECT * FROM inscripcion";
         
-        try{
-            String query =  "SELECT * FROM inscripcion";
+        try
+        {
             stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
             Inscripcion inscricion;
@@ -263,12 +239,16 @@ public class InscripcionData {
                 listaInscripciones.add(inscricion);
             }
             
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        } finally  {
+            try  {
+                resultado.close();
+                stmt.close();
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
-        }
-        
         return listaInscripciones;
     }
 
@@ -288,22 +268,14 @@ public class InscripcionData {
             
             stmt.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Nota actualizada.");
-            stmt.close();
-        }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog(null, "ERROR al actualizar registro: " + ex.getMessage());
-        }
-        finally 
-        {
-            try 
-            {
+            JOptionPane.showMessageDialog(null, "Nota actualizada.", "", JOptionPane.INFORMATION_MESSAGE);
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "ERROR al actualizar registro: " + ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+        } finally  {
+            try {
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             }
         }
     } // actualizarMateriaID()
@@ -320,29 +292,18 @@ public class InscripcionData {
             stmt = con.prepareStatement( query );
             stmt.setInt( 1, id_inscripcion);
             
-            if(stmt.executeUpdate() > 0)
-            {
-                System.out.println("Registro de inscripcion eliminado.");
+            if(stmt.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Registro eliminado" , "", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "ID ingresado incorrecto" , "", JOptionPane.ERROR_MESSAGE);
             }
-            else
-            {
-                System.out.println("ID ingresado incorrecto.");
-            }
-            stmt.close();            
-        }
-        catch ( SQLException ex )
-        {
-            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
-        }
-        finally 
-        {
-            try 
-            {
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
                 stmt.close();
-            } 
-            catch  ( SQLException ex ) 
-            {
-                ex.printStackTrace( System.out );
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
             }
         }
     } // eliminarInscripcion()
