@@ -24,7 +24,6 @@ public class MateriaData {
                         "VALUES (?, ?, 1)";    
         try{
             
-            
             PreparedStatement stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
             stmt.setString( 1, materia.getNombre() );
             stmt.setInt( 2 , materia.getAnio() );
@@ -37,7 +36,7 @@ public class MateriaData {
             }
 
             JOptionPane.showMessageDialog(null, "Materia guardada con exito.");
-            stmt.close();
+            con.close();
         }
         
         catch ( SQLException ex ){
@@ -60,7 +59,7 @@ public class MateriaData {
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Registro de materia actualizado.");
-            stmt.close();
+            con.close();
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR al actualizar registro: " + ex.getMessage());
@@ -90,7 +89,7 @@ public class MateriaData {
                 System.out.println("No se encontro la materia solicitada.");
             }
             
-            stmt.close();
+            con.close();
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR al buscar la materia: " + ex.getMessage());
@@ -114,7 +113,7 @@ public class MateriaData {
             }else{
                 System.out.println("ID ingresado incorrecto.");
             }
-            stmt.close();            
+            con.close();           
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
@@ -135,7 +134,7 @@ public class MateriaData {
             }else{
                 System.out.println("ID ingresado incorrecto.");
             }
-            stmt.close();            
+            con.close();        
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );
@@ -162,7 +161,7 @@ public class MateriaData {
                 array_materias.add(materiaN);
             }
             
-            stmt.close();
+            con.close();
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() );

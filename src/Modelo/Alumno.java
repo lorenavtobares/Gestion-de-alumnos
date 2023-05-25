@@ -11,7 +11,7 @@ public class Alumno {
     private boolean estado;
 
     //Constructores
-        public Alumno(int id_alumno, int dni, String nombre, String apellido, LocalDate fecha_nacimiento, boolean estado) {
+        public Alumno(int id_alumno, int dni,  String apellido , String nombre, LocalDate fecha_nacimiento, boolean estado) {
             this.id_alumno = id_alumno;
             this.dni = dni;
             this.apellido = apellido;
@@ -20,7 +20,7 @@ public class Alumno {
             this.estado = estado;
         }
         
-        public Alumno(int dni, String nombre, String apellido, LocalDate fecha_nacimiento, boolean estado) {
+        public Alumno(int dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
             this.dni = dni;
             this.apellido = apellido;
             this.nombre = nombre;
@@ -84,7 +84,7 @@ public class Alumno {
     //Metodos Extras
         @Override
         public String toString() {
-            return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fecha_nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
+            return "Alumno{ " + id_alumno + " - " + dni + " - " + apellido + " - " + nombre + " - " + fecha_nacimiento + " - " + estado + '}';
         }
 
 }

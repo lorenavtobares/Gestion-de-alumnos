@@ -2,17 +2,11 @@ package Controlador;
 
 import Conexion.Conexion;
 import Modelo.Alumno;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 public class AlumnoData {
 
@@ -24,35 +18,30 @@ public class AlumnoData {
 
     public void guardarAlumno( Alumno alumno ){
         
-        String query =  "INSERT INTO alumno " +
-                        "(dni, apellido, nombre, fecha_nacimiento, estado) " +
-                        "VALUES (?, ?, ?, ?, 1)";
+        String query    = "INSERT INTO alumno "
+                        + "(dni, apellido, nombre, fecha_nacimiento, estado) "
+                        + "VALUES (?, ?, ?, ?, 1)";
         
         try{
             PreparedStatement stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
-            // numeracion corresponde a ? ? ?
-            //Recibe parametros del objeto creado en Universidad.java
             stmt.setInt( 1, alumno.getDni() );
             stmt.setString( 2, alumno.getApellido() );
             stmt.setString( 3, alumno.getNombre() );
             stmt.setDate( 4, Date.valueOf( alumno.getFecha_nacimiento() ) );
             
-            //Ejecuta la consuta
             stmt.executeUpdate();
             ResultSet resultado = stmt.getGeneratedKeys();
             
-            //Resultado.next() - obtiene el id siguiente
             if( resultado.next() ) {
-                // 1 = posicion en db
                 alumno.setId_alumno(resultado.getInt( 1 )); 
-            }
-
+            }           
+            
             JOptionPane.showMessageDialog(null, "Alumno guardado con exito");
-            stmt.close();
         }
         catch ( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR al guardar el Alumno: " + ex.getMessage() );
         }
+
     }//.guardarAlumno()
     
     public void actualizarAlumno ( Alumno alumno ){
@@ -140,8 +129,8 @@ public class AlumnoData {
     
     public void habilitarAlumno ( int id_alumno ){
         try{
-            String query =  "UPDATE alumno " + 
-                            "SET estado = true " + 
+            String query =  "UPDATE alumno " +
+                            "SET estado = true " +
                             "WHERE id_alumno = ?";
             
             PreparedStatement stmt = con.prepareStatement( query );

@@ -3,6 +3,7 @@ import Controlador.*;
 import Vistas.FormLogin;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Universidad {
     public static void main(String[] args) {
@@ -161,6 +162,21 @@ public class Universidad {
         InscripcionData inscripcion_data = new InscripcionData();
         inscripcion_data.eliminarInscripcion(9);
         */
+    
+    //Array Inscripciones
+        InscripcionData inscripcion_data = new InscripcionData();
+        List <Inscripcion> listaCursada = new ArrayList<Inscripcion>();
+        listaCursada  = inscripcion_data.listaCursada();
+        
+        System.out.println("\n-------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %-20s %-20s %-20s", "ID_INSCRIPCION", "NOTA", "ID_ALUMNO", "ID_MATERIA");
+        System.out.println("\n-------------------------------------------------------------------------------------");
+        
+        for (Inscripcion inscripcion : listaCursada) {
+            System.out.format("%-20s %-20s %-20s %-20s", inscripcion.getId_inscripto() , inscripcion.getNota() , inscripcion.getAlumno() , inscripcion.getMateria());
+            System.out.println();
+        }
+        
         
     }
 }
