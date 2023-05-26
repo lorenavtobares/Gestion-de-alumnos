@@ -54,6 +54,11 @@ public class FormLogin extends javax.swing.JFrame {
                 btn_loginMouseClicked(evt);
             }
         });
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         label_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
         label_usuario.setRequestFocusEnabled(false);
@@ -157,6 +162,10 @@ public class FormLogin extends javax.swing.JFrame {
     private void btn_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_btn_salirMouseClicked
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_loginActionPerformed
       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

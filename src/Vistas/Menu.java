@@ -40,7 +40,7 @@ public class Menu extends javax.swing.JFrame  {
         A_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
             escritorio.removeAll();
             escritorio.repaint();
-            InscripcionesAlumnos inscripcionesAlumnos = new InscripcionesAlumnos();
+            InscripcionesMaterias inscripcionesAlumnos = new InscripcionesMaterias();
             inscripcionesAlumnos.setVisible(true);
             escritorio.add(inscripcionesAlumnos);
             escritorio.moveToFront(inscripcionesAlumnos);

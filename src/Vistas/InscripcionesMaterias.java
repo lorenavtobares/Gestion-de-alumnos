@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
+/*
+este formulario realiza la inscripcion de un alumno
+esta vista la ve el alumno
+*/
 
-/**
- *
- * @author Lenovo
- */
-public class ListaInscripciones extends javax.swing.JInternalFrame {
+
+public class InscripcionesMaterias extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ListaInscripciones
+     * Creates new form InscripcionesAlumnos
      */
-    public ListaInscripciones() {
+    public InscripcionesMaterias() {
         initComponents();
     }
 
