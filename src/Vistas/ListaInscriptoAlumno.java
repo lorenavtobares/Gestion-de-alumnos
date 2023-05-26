@@ -11,13 +11,12 @@ import javax.swing.ImageIcon;
  *
  * @author Lenovo
  */
-public class ListaMaterias extends javax.swing.JInternalFrame {
+public class ListaInscriptoAlumno extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ListaMaterias
+     * Creates new form ListaInscripciones
      */
-    
-    public ListaMaterias() {
+    public ListaInscriptoAlumno() {
         initComponents();
     }
 
@@ -37,14 +36,16 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableMostrar = new javax.swing.JTable();
-        btnActivos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
+        tablaMostrar = new javax.swing.JTable();
+        btnMostrar = new javax.swing.JButton();
+        jcAlumnos = new javax.swing.JComboBox<>();
         labelTitulo = new javax.swing.JLabel();
 
-        tableMostrar.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setText("Alumno");
+
+        tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,15 +56,13 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableMostrar);
+        jScrollPane1.setViewportView(tablaMostrar);
 
-        btnActivos.setText("Activos");
+        btnMostrar.setText("Mostrar");
 
-        jButton2.setText("Bajados");
+        jcAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnCerrar.setText("Cerrar");
-
-        labelTitulo.setText("Ficha Mostrar Todas las Materias");
+        labelTitulo.setText("Ficha Mostrar Todas las Materias Inscripto un Alumno");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,40 +71,40 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnActivos)
-                                .addGap(462, 462, 462)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCerrar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1)
+                                .addGap(115, 115, 115)
+                                .addComponent(jcAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90)
+                                .addComponent(btnMostrar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(594, 594, 594)
+                        .addGap(546, 546, 546)
                         .addComponent(labelTitulo)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addComponent(labelTitulo)
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActivos)
-                    .addComponent(jButton2)
-                    .addComponent(btnCerrar))
-                .addGap(61, 61, 61))
+                    .addComponent(jLabel1)
+                    .addComponent(btnMostrar)
+                    .addComponent(jcAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -122,12 +121,12 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActivos;
-    private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnMostrar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jcAlumnos;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JTable tableMostrar;
+    private javax.swing.JTable tablaMostrar;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,6 @@ public class Menu extends javax.swing.JFrame  {
     public Menu() {
         crearMenu();
         initComponents();
-        label_usuarioSesion.setText("Usuario: " + Login.getUsuario_login());
     }
   
     private void crearMenu(){
@@ -91,7 +90,7 @@ public class Menu extends javax.swing.JFrame  {
         M_opcion4.addActionListener((java.awt.event.ActionEvent evt) -> {
             escritorio.removeAll();
             escritorio.repaint();
-            ListaInscripciones listaInscripciones = new ListaInscripciones();
+            ListaInscriptoAlumno listaInscripciones = new ListaInscriptoAlumno();
             listaInscripciones.setVisible(true);
             escritorio.add(listaInscripciones);
             escritorio.moveToFront(listaInscripciones);
@@ -158,62 +157,20 @@ public class Menu extends javax.swing.JFrame  {
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        btnPrueba_usuario = new javax.swing.JButton();
-        btnPrueba_rol = new javax.swing.JButton();
-        label_usuarioSesion = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnPrueba_usuario.setText("Usuario");
-        btnPrueba_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrueba_usuarioActionPerformed(evt);
-            }
-        });
-
-        btnPrueba_rol.setText("rol");
-        btnPrueba_rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrueba_rolActionPerformed(evt);
-            }
-        });
-
-        label_usuarioSesion.setText("jLabel1");
-
-        escritorio.setLayer(btnPrueba_usuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(btnPrueba_rol, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(label_usuarioSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(354, 354, 354)
-                .addComponent(btnPrueba_usuario)
-                .addGap(216, 216, 216)
-                .addComponent(btnPrueba_rol)
-                .addContainerGap(669, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label_usuarioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+            .addGap(0, 1358, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(btnPrueba_usuario))
-                    .addGroup(escritorioLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(label_usuarioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
-                        .addComponent(btnPrueba_rol)))
-                .addContainerGap(526, Short.MAX_VALUE))
+            .addGap(0, 774, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,14 +186,6 @@ public class Menu extends javax.swing.JFrame  {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPrueba_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrueba_usuarioActionPerformed
-        JOptionPane.showMessageDialog ( null, "usuario: " + Login.getUsuario_login() , "Error de ejecucion", JOptionPane.QUESTION_MESSAGE);
-    }//GEN-LAST:event_btnPrueba_usuarioActionPerformed
-
-    private void btnPrueba_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrueba_rolActionPerformed
-        JOptionPane.showMessageDialog ( null, "rol: " + Login.getUsuario_login() , "Error de ejecucion", JOptionPane.QUESTION_MESSAGE);
-    }//GEN-LAST:event_btnPrueba_rolActionPerformed
       
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -269,12 +218,9 @@ public class Menu extends javax.swing.JFrame  {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrueba_rol;
-    private javax.swing.JButton btnPrueba_usuario;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_usuarioSesion;
     // End of variables declaration//GEN-END:variables
    
 }

@@ -8,7 +8,10 @@ este formulario realiza la inscripcion de un alumno
 esta vista la ve el alumno
 */
 
-
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 public class InscripcionesMaterias extends javax.swing.JInternalFrame {
 
     /**
@@ -27,17 +30,75 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/Fondo_para_formularios_transversal.png"));
+        Image image = icon.getImage();
+        jPanel1 = new javax.swing.JPanel(){
+            public void paintComponent(Graphics grafico){
+                grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
+        labelAlumno = new javax.swing.JLabel();
+        jcAlumnos = new javax.swing.JComboBox<>();
+        labelMateria = new javax.swing.JLabel();
+        jcMaterias = new javax.swing.JComboBox<>();
+        btnInscribir = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+
+        labelAlumno.setText("Alumno:");
+
+        jcAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        labelMateria.setText("Materia:");
+
+        jcMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnInscribir.setText("Inscribir");
+
+        btnCerrar.setText("Cerrar");
+
+        labelTitulo.setText("Ficha Inscribir en Materia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1364, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInscribir)
+                            .addComponent(labelMateria)
+                            .addComponent(labelAlumno))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcMaterias, 0, 1000, Short.MAX_VALUE)
+                            .addComponent(jcAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(559, 559, 559)
+                        .addComponent(labelTitulo)))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(labelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAlumno))
+                .addGap(120, 120, 120)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMateria)
+                    .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(183, 183, 183)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInscribir)
+                    .addComponent(btnCerrar))
+                .addGap(80, 80, 80))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -58,6 +119,13 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnInscribir;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jcAlumnos;
+    private javax.swing.JComboBox<String> jcMaterias;
+    private javax.swing.JLabel labelAlumno;
+    private javax.swing.JLabel labelMateria;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }
