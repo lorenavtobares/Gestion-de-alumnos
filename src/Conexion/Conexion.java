@@ -1,9 +1,5 @@
-//@author Grupo11
-
 package Conexion;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,18 +9,17 @@ public class Conexion {
     private static final String DATABASE_URL = "jdbc:mariadb://";
     private static final String DATABASE_HOST = "localhost";
     private static final String DATABASE_PUERTO = ":3306";
-    private static final String DATABASE_DB = "/db_universidad";
+    private static final String DATABASE_DB = "/db_universidad_g11";
     private static final String DATABASE_USUARIO = "root";
     private static final String DATABASE_PASSWORD = "";
     private static Conexion conexion = null;
     
     private Conexion() {
         try {
-            //Cargar drivers
             Class.forName("org.mariadb.jdbc.Driver");
             
         } catch ( ClassNotFoundException ex ) {
-            JOptionPane.showMessageDialog(null, "Clase Conexion: Error al cargar Driver" + ex);
+            JOptionPane.showMessageDialog(null, "Clase Conexion: Error al cargar Driver" + ex.getMessage() );
         }
     }
 
@@ -55,5 +50,5 @@ public class Conexion {
         
         return con;
     }
-
+    
 }
