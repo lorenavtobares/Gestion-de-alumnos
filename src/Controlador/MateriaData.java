@@ -170,7 +170,7 @@ public class MateriaData {
             catch ( SQLException ex )
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
-    }//.eliminarMateria()
+    }//.habilitarMateria()
 
     public ArrayList<Materia> listarHabilitadas(){
         ArrayList array_materias = new ArrayList();
@@ -207,4 +207,76 @@ public class MateriaData {
         
         return array_materias;
     }
+    
+     public void deshabilitarMateria ( int id_materia ){
+        PreparedStatement stmt = null;
+        String query    = "UPDATE materia "
+                        + "SET estado = false "
+                        + "WHERE id_materia = ?";
+        
+        try
+        {
+            stmt = con.prepareStatement( query );
+            stmt.setInt( 1, id_materia);
+            
+            if(stmt.executeUpdate() < 1){
+                JOptionPane.showMessageDialog(null, "Materia deshabilitada ", "", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "ID ingresado incorrecto", "", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch ( SQLException ex ){
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
+        }finally {
+            try {  
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+    }//.deshabilitarMateria()
+    
+     public ArrayList<Materia> listarDeshabilitadas(){
+        ArrayList array_materiasD = new ArrayList();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        String query    = "SELECT id_materia, nombre, anio "
+                        + "FROM materia "
+                        + "WHERE estado = 0";
+        
+        try{
+            stmt = con.prepareStatement( query );
+            resultado = stmt.executeQuery();
+            
+            while ( resultado.next() ) 
+            {
+                Materia materiaN = new Materia();
+                materiaN.setId_materia(resultado.getInt("id_materia"));
+                materiaN.setNombre(resultado.getString("nombre"));
+                materiaN.setAnio(resultado.getInt("anio"));
+                
+                array_materiasD.add(materiaN);
+            }
+        }
+        catch ( SQLException ex ){
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        }finally {
+            try {  
+                resultado.close();
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+        
+        return array_materiasD;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

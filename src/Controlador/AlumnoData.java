@@ -11,6 +11,7 @@ public class AlumnoData {
 
     private final Connection con;
     private static List<Alumno> list_alumnos = new ArrayList<Alumno>();
+    private static List<Alumno> list_alumnosD = new ArrayList<Alumno>();
     
     public AlumnoData(){
         con = Conexion.getConexion();
@@ -227,4 +228,78 @@ public class AlumnoData {
         
         return list_alumnos;
     }
+    
+    public void deshabilitandoAlumno ( int idAlumno ){
+        PreparedStatement stmt = null;
+        
+        String query    = "UPDATE alumno "
+                        + "SET estado = false "
+                        + "WHERE id_alumno = ?";
+        
+        try{
+            stmt = con.prepareStatement( query );
+            stmt.setInt( 1, idAlumno );
+            
+            if(stmt.executeUpdate() < 1){
+                JOptionPane.showMessageDialog( null, "Alumno deshabilitado"  + " " + JOptionPane.INFORMATION_MESSAGE );
+            }else{
+                JOptionPane.showMessageDialog( null, "ID ingresado incorrecto"  + " " + JOptionPane.ERROR_MESSAGE );
+            }
+        }
+        catch ( SQLException ex ){
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), "" , JOptionPane.ERROR_MESSAGE );
+        }
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+        
+    }//.deshabilitadosAlumno()
+
+    
+    //se agrego este metodo
+    public List <Alumno> listarDeshabilitados ( ) {
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        
+        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+                        + "FROM alumno "
+                        + "WHERE estado = 0";
+        
+        try
+        {
+            stmt = con.prepareStatement( query );
+            resultado = stmt.executeQuery();
+            
+            while ( resultado.next() ) 
+            {
+                Alumno alumnoM = new Alumno();
+                alumnoM.setId_alumno( resultado.getInt("id_alumno"));
+                alumnoM.setDni(resultado.getInt("dni"));
+                alumnoM.setApellido(resultado.getString("apellido"));
+                alumnoM.setNombre(resultado.getString("nombre"));
+                alumnoM.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());    
+                list_alumnosD.add(alumnoM);
+            }   
+        }
+        catch ( SQLException ex ) 
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "" , JOptionPane.ERROR_MESSAGE);
+        }
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
+        
+        return list_alumnosD;
+    }
+    
+    
+    
+    
+    
+    
+    
 }

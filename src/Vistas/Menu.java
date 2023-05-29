@@ -1,5 +1,8 @@
 package Vistas;
 
+import Controlador.AlumnoData;
+import Controlador.InscripcionData;
+import Controlador.MateriaData;
 import Modelo.Login;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -7,6 +10,14 @@ import javax.swing.ImageIcon;
 import javax.swing.*;
 
 public class Menu extends javax.swing.JFrame  {
+    
+     public static AlumnoData alumnoEscritorio = new AlumnoData();
+     public static InscripcionData inscripcionEscritorio = new InscripcionData();
+     public static MateriaData materiaEscritorio = new MateriaData();
+    
+    
+    
+    
     
     private JMenuBar barra;
     private JMenu Menu_Alumnos, Menu_Materias, Menu_Salir;

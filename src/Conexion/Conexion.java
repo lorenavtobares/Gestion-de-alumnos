@@ -1,8 +1,9 @@
 package Conexion;
-import java.sql.*;
+import java.sql.*; //
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 
 
 public class Conexion {
