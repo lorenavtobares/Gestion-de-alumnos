@@ -2,10 +2,12 @@ package Vistas;
 
 import Controlador.*;
 import Modelo.*;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -24,6 +26,14 @@ public class Menu extends javax.swing.JFrame {
         crearMenu();
         initComponents();
     }
+    
+    private void centrarJinternalFrame (JInternalFrame i ){
+    
+        Dimension tamanioEscritorio =  Escritorio.getSize();
+        Dimension tamanioVentana = i.getSize();
+        i.setLocation((tamanioEscritorio.width - tamanioVentana.width) / 2, (tamanioEscritorio.height - tamanioVentana.height) /2);
+        
+    }
 
     private void crearMenu(){
         barra = new JMenuBar();
@@ -40,16 +50,19 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             ListaAlumnos listaAlumnos = new ListaAlumnos();
+            centrarJinternalFrame(listaAlumnos);
             listaAlumnos.setVisible(true);
             Escritorio.add(listaAlumnos);
             Escritorio.moveToBack(listaAlumnos);
+            
         });
         
         A_opcion2 = new JMenuItem("Lista Materias Inscriptos");
         A_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
-            InscripcionesMaterias inscripcionesAlumnos = new InscripcionesMaterias();
+            ListaMateriasInscripto inscripcionesAlumnos = new ListaMateriasInscripto();
+            centrarJinternalFrame(inscripcionesAlumnos);
             inscripcionesAlumnos.setVisible(true);
             Escritorio.add(inscripcionesAlumnos);
             Escritorio.moveToFront(inscripcionesAlumnos);
@@ -60,6 +73,7 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             ABMAlumnos abmAlumnos = new ABMAlumnos();
+            centrarJinternalFrame(abmAlumnos);
             abmAlumnos.setVisible(true);
             Escritorio.add(abmAlumnos);
             Escritorio.moveToFront(abmAlumnos);
@@ -71,6 +85,7 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             ListaMaterias listaMaterias = new ListaMaterias();
+            centrarJinternalFrame(listaMaterias);
             listaMaterias.setVisible(true);
             Escritorio.add(listaMaterias);
             Escritorio.moveToFront(listaMaterias);
@@ -81,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             ListaMateriasInscripto listaMateriasIns = new ListaMateriasInscripto();
+            centrarJinternalFrame(listaMateriasIns);
             listaMateriasIns.setVisible(true);
             Escritorio.add(listaMateriasIns);
             Escritorio.moveToFront(listaMateriasIns);
@@ -91,6 +107,7 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             ABMMaterias abmMaterias = new ABMMaterias();
+            centrarJinternalFrame(abmMaterias);
             abmMaterias.setVisible(true);
             Escritorio.add(abmMaterias);
             Escritorio.moveToFront(abmMaterias);
@@ -100,8 +117,9 @@ public class Menu extends javax.swing.JFrame {
         M_opcion4.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
-            ListaInscriptoAlumno  listaInscripciones = new ListaInscriptoAlumno ();
+            ListaMateriasInscripto listaInscripciones = new ListaMateriasInscripto();
             listaInscripciones.setVisible(true);
+            centrarJinternalFrame(listaInscripciones);
             Escritorio.add(listaInscripciones);
             Escritorio.moveToFront(listaInscripciones);
         });
@@ -111,6 +129,7 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.removeAll();
             Escritorio.repaint();
             Calificaciones calificaciones = new Calificaciones();
+            centrarJinternalFrame(calificaciones);
             calificaciones.setVisible(true);
             Escritorio.add(calificaciones);
             Escritorio.moveToFront(calificaciones);
