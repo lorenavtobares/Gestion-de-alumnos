@@ -18,9 +18,9 @@ public class Menu extends javax.swing.JFrame {
     private JMenu Menu_Alumnos, Menu_Materias, Menu_Salir;
     private JMenuItem A_opcion1, A_opcion2, A_opcion3, M_opcion1, M_opcion2, M_opcion3, M_opcion4, M_opcion5, S_opcion1;
     private static FormLogin form = new FormLogin();
-    private static AlumnoData Alumno_x = new AlumnoData();
-    private static MateriaData Materia_x = new MateriaData();
-    private static InscripcionData Inscripcion_x = new InscripcionData();
+    public static AlumnoData alumnoEscritorio = new AlumnoData();
+    public static MateriaData materiaEscritorio = new MateriaData();
+    public static InscripcionData inscripcionEscritorio = new InscripcionData();
     
     public Menu() {
         crearMenu();

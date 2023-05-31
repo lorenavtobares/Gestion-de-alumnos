@@ -19,7 +19,11 @@ public class FormLogin extends javax.swing.JFrame {
     public FormLogin() {  
         con = Conexion.getConexion();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -40,7 +44,6 @@ public class FormLogin extends javax.swing.JFrame {
         tf_contrasenia = new javax.swing.JPasswordField();
         btn_salir = new javax.swing.JButton();
 
-        setExtendedState(6);
         setUndecorated(true);
 
         jPandel_derecho.setBackground(new java.awt.Color(153, 153, 153));
@@ -86,31 +89,27 @@ public class FormLogin extends javax.swing.JFrame {
         jPandel_derechoLayout.setHorizontalGroup(
             jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPandel_derechoLayout.createSequentialGroup()
-                .addContainerGap(263, Short.MAX_VALUE)
+                .addContainerGap(443, Short.MAX_VALUE)
                 .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createSequentialGroup()
                         .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createSequentialGroup()
                         .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPandel_derechoLayout.createSequentialGroup()
-                                    .addComponent(label_contraseña)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tf_contrasenia))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createSequentialGroup()
-                                    .addComponent(label_usuario)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createSequentialGroup()
-                                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)))
-                        .addGap(121, 121, 121))))
+                            .addComponent(label_usuario, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_contraseña))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_login, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tf_contrasenia)
+                                .addComponent(tf_usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                        .addGap(41, 41, 41))))
         );
         jPandel_derechoLayout.setVerticalGroup(
             jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPandel_derechoLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(68, 68, 68)
                 .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label_usuario)
                     .addComponent(tf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,9 +117,9 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGroup(jPandel_derechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tf_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_contraseña))
-                .addGap(47, 47, 47)
+                .addGap(33, 33, 33)
                 .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -137,7 +136,6 @@ public class FormLogin extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseClicked
