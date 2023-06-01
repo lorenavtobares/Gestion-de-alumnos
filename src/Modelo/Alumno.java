@@ -84,7 +84,7 @@ public class Alumno {
     //Metodos Extras
         @Override
         public String toString() {
-            return "Alumno{ " + id_alumno + " - " + dni + " - " + apellido + " - " + nombre + " - " + fecha_nacimiento + " - " + estado + '}';
+            return  apellido + "  " + nombre ;
         }
 
 }

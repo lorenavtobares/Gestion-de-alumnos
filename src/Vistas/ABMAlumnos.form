@@ -58,17 +58,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnAltaCerrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaCerrar1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jtApellido" alignment="0" pref="553" max="32767" attributes="0"/>
-                          <Component id="jtNombre" alignment="0" pref="553" max="32767" attributes="0"/>
-                          <Component id="jtDni" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jdFechaNacimiento" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAltaGuardar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAltaLimpiar" max="32767" attributes="0"/>
+                          <Component id="jtApellido1" alignment="0" pref="553" max="32767" attributes="0"/>
+                          <Component id="jtNombre1" alignment="0" pref="553" max="32767" attributes="0"/>
+                          <Component id="jtDni1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jdFechaNacimiento1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAltaGuardar1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAltaLimpiar1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="iconDniVerificado" min="-2" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAltaCerrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaCerrar1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -92,26 +92,26 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jtDni" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtDni1" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jtApellido" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtApellido1" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jtNombre" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtNombre1" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jdFechaNacimiento" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jdFechaNacimiento1" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="135" max="32767" attributes="0"/>
-                      <Component id="btnAltaGuardar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaGuardar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnAltaLimpiar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaLimpiar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnAltaGuardar">
+            <Component class="javax.swing.JButton" name="btnAltaGuardar1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/guardar.png"/>
@@ -119,10 +119,10 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardar1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAltaLimpiar">
+            <Component class="javax.swing.JButton" name="btnAltaLimpiar1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/escoba (1).png"/>
@@ -130,20 +130,20 @@
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaLimpiarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaLimpiar1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAltaCerrar">
+            <Component class="javax.swing.JButton" name="btnAltaCerrar1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/cerrar.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaCerrarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaCerrar1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtDni">
+            <Component class="javax.swing.JTextField" name="jtDni1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -152,7 +152,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtNombre">
+            <Component class="javax.swing.JTextField" name="jtNombre1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -161,7 +161,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtApellido">
+            <Component class="javax.swing.JTextField" name="jtApellido1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -170,7 +170,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimiento">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimiento1">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -209,7 +209,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnDeleteCerrar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDeleteCerrar2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
@@ -217,8 +217,8 @@
                           <Component id="jtApellidoUp2" alignment="0" pref="553" max="32767" attributes="0"/>
                           <Component id="jtNombreUp2" alignment="0" pref="553" max="32767" attributes="0"/>
                           <Component id="jtDniUp2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jdFechaNacimientoDelete1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jdFechaNacimientoDelete2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAltaGuardarUp2" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="140" max="32767" attributes="0"/>
@@ -228,9 +228,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnDeleteCerrar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDeleteCerrar2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jtDniUp2" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -238,7 +238,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jtNombreUp2" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jdFechaNacimientoDelete1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jdFechaNacimientoDelete2" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btnAltaGuardarUp2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="80" max="32767" attributes="0"/>
@@ -247,7 +247,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JComboBox" name="jComboBox2">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -259,7 +259,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jtApellidoUp2">
@@ -280,7 +280,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoDelete1">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoDelete2">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -300,14 +300,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarUp2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDeleteCerrar1">
+            <Component class="javax.swing.JButton" name="btnDeleteCerrar2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/cerrar.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCerrar1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCerrar2ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtDniUp2">
@@ -338,17 +338,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnDeleteCerrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDeleteCerrar3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jtApellidoUp1" alignment="0" pref="553" max="32767" attributes="0"/>
-                          <Component id="jtNombreUp1" alignment="0" pref="553" max="32767" attributes="0"/>
-                          <Component id="jtDniUp1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jdFechaNacimientoDelete" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAltaGuardarUp1" max="32767" attributes="0"/>
+                          <Component id="jtApellidoUp3" alignment="0" pref="553" max="32767" attributes="0"/>
+                          <Component id="jtNombreUp3" alignment="0" pref="553" max="32767" attributes="0"/>
+                          <Component id="jtDniUp3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jdFechaNacimientoDelete3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAltaGuardarUp3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="140" max="32767" attributes="0"/>
                   </Group>
@@ -357,36 +357,36 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnDeleteCerrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDeleteCerrar3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jComboBox3" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jtDniUp1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jtDniUp3" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jtApellidoUp1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jtApellidoUp3" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jtNombreUp1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jtNombreUp3" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jdFechaNacimientoDelete" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jdFechaNacimientoDelete3" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnAltaGuardarUp1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaGuardarUp3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="80" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnDeleteCerrar">
+            <Component class="javax.swing.JButton" name="btnDeleteCerrar3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/cerrar.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCerrarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteCerrar3ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtDniUp1">
+            <Component class="javax.swing.JTextField" name="jtDniUp3">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -395,7 +395,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="jComboBox3">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -407,10 +407,10 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtApellidoUp1">
+            <Component class="javax.swing.JTextField" name="jtApellidoUp3">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -419,7 +419,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtNombreUp1">
+            <Component class="javax.swing.JTextField" name="jtNombreUp3">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -428,7 +428,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoDelete">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoDelete3">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -437,7 +437,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAltaGuardarUp1">
+            <Component class="javax.swing.JButton" name="btnAltaGuardarUp3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/basura.png"/>
@@ -445,7 +445,7 @@
                 <Property name="text" type="java.lang.String" value="Borrar Registro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarUp1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarUp3ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -469,19 +469,19 @@
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jcbEstado" min="-2" pref="553" max="-2" attributes="0"/>
+                              <Component id="jcbEstado4" min="-2" pref="553" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtApellidoUp" alignment="0" pref="553" max="32767" attributes="0"/>
-                                  <Component id="jtNombreUp" alignment="0" pref="553" max="32767" attributes="0"/>
-                                  <Component id="jtDniUp" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jdFechaNacimientoUp" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnAltaGuardarUp" max="32767" attributes="0"/>
+                                  <Component id="jtApellidoUp4" alignment="0" pref="553" max="32767" attributes="0"/>
+                                  <Component id="jtNombreUp4" alignment="0" pref="553" max="32767" attributes="0"/>
+                                  <Component id="jtDniUp4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jdFechaNacimientoUp4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnAltaGuardarUp4" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jcbListaAlumnos1" min="-2" pref="553" max="-2" attributes="0"/>
+                          <Component id="jcbListaAlumnos4" min="-2" pref="553" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="81" max="32767" attributes="0"/>
-                      <Component id="btnUpCerrar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnUpCerrar4" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -489,41 +489,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnUpCerrar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUpCerrar4" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="jcbListaAlumnos1" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jcbListaAlumnos4" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jtDniUp" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtDniUp4" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jtApellidoUp" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtApellidoUp4" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jtNombreUp" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jtNombreUp4" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jdFechaNacimientoUp" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jdFechaNacimientoUp4" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jcbEstado" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jcbEstado4" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace pref="77" max="32767" attributes="0"/>
-                      <Component id="btnAltaGuardarUp" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAltaGuardarUp4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnUpCerrar">
+            <Component class="javax.swing.JButton" name="btnUpCerrar4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/cerrar.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpCerrarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpCerrar4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtDniUp">
+            <Component class="javax.swing.JTextField" name="jtDniUp4">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -532,7 +532,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtApellidoUp">
+            <Component class="javax.swing.JTextField" name="jtApellidoUp4">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -541,7 +541,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtNombreUp">
+            <Component class="javax.swing.JTextField" name="jtNombreUp4">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -550,7 +550,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoUp">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdFechaNacimientoUp4">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -559,7 +559,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAltaGuardarUp">
+            <Component class="javax.swing.JButton" name="btnAltaGuardarUp4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/recargar.png"/>
@@ -567,10 +567,10 @@
                 <Property name="text" type="java.lang.String" value="Actualizar Registro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarUpActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltaGuardarUp4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jcbEstado">
+            <Component class="javax.swing.JComboBox" name="jcbEstado4">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -588,7 +588,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jcbListaAlumnos1">
+            <Component class="javax.swing.JComboBox" name="jcbListaAlumnos4">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -600,7 +600,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>
