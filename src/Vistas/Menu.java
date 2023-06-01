@@ -44,24 +44,12 @@ public class Menu extends javax.swing.JFrame {
         Menu_Salir = new JMenu("Salir");
         Menu_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/salir_sistema.png")));
         
-        //Menu Alumnos
-        A_opcion1 = new JMenuItem("Punto 1 _ Lista Alumnos");
-        A_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
-            Escritorio.removeAll();
-            Escritorio.repaint();
-            ListaAlumnos listaAlumnos = new ListaAlumnos();
-            centrarJinternalFrame(listaAlumnos);
-            listaAlumnos.setVisible(true);
-            Escritorio.add(listaAlumnos);
-            Escritorio.moveToBack(listaAlumnos);
-            
-        });
-        
-        A_opcion2 = new JMenuItem("Lista Materias Inscriptos");
+        //Menu Alumnos        
+        A_opcion2 = new JMenuItem("Lista inscripciones a materias");
         A_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
-            ListaMateriasInscripto inscripcionesAlumnos = new ListaMateriasInscripto();
+            ListaMateriasCursadas inscripcionesAlumnos = new ListaMateriasCursadas();
             centrarJinternalFrame(inscripcionesAlumnos);
             inscripcionesAlumnos.setVisible(true);
             Escritorio.add(inscripcionesAlumnos);
@@ -79,8 +67,10 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.moveToFront(abmAlumnos);
         });
         
+        
+        
         //Menu Materias
-        M_opcion1 = new JMenuItem("Punto 2 _ Lista Materias");
+        M_opcion1 = new JMenuItem("Punto 2 _ Lista Materias"); // ???????????????????
         M_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
@@ -91,18 +81,18 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.moveToFront(listaMaterias);
         });
         
-        M_opcion2 = new JMenuItem("Lista de inscripciones");
+        M_opcion2 = new JMenuItem("Lista de inscripciones"); // OK  OK    OK
         M_opcion2.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
-            ListaMateriasInscripto listaMateriasIns = new ListaMateriasInscripto();
+            ListaInscripcionesAMaterias listaMateriasIns = new ListaInscripcionesAMaterias();
             centrarJinternalFrame(listaMateriasIns);
             listaMateriasIns.setVisible(true);
             Escritorio.add(listaMateriasIns);
             Escritorio.moveToFront(listaMateriasIns);
         });
         
-        M_opcion3 = new JMenuItem("ABM Materias");
+        M_opcion3 = new JMenuItem("ABM Materias"); // OK  ??  OK
         M_opcion3.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
@@ -113,18 +103,18 @@ public class Menu extends javax.swing.JFrame {
             Escritorio.moveToFront(abmMaterias);
         });
         
-        M_opcion4 = new JMenuItem("Inscribir Alumnos");
+        M_opcion4 = new JMenuItem("Inscribir Alumnos"); // OK  OK    OK
         M_opcion4.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
-            ListaMateriasInscripto listaInscripciones = new ListaMateriasInscripto();
+            InscripcionesMaterias listaInscripciones = new InscripcionesMaterias();
             listaInscripciones.setVisible(true);
             centrarJinternalFrame(listaInscripciones);
             Escritorio.add(listaInscripciones);
             Escritorio.moveToFront(listaInscripciones);
         });
         
-        M_opcion5 = new JMenuItem("Calificaciones");
+        M_opcion5 = new JMenuItem("Calificaciones"); // OK  OK    OK
         M_opcion5.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
@@ -144,7 +134,6 @@ public class Menu extends javax.swing.JFrame {
         
         if ( form.rolSesion.equals("alumno") ){
 
-            Menu_Alumnos.add(A_opcion1);
             Menu_Alumnos.add(A_opcion2);
             Menu_Alumnos.add(A_opcion3);
             Menu_Salir.add("Usuario: " + form.usuarioSesion);
@@ -158,7 +147,6 @@ public class Menu extends javax.swing.JFrame {
         
         if ( form.rolSesion.equals("docente") ){
 
-            Menu_Alumnos.add(A_opcion1);
             Menu_Alumnos.add(A_opcion2);
             Menu_Alumnos.add(A_opcion3);
             Menu_Materias.add(M_opcion1);
@@ -183,39 +171,25 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Escritorio = new javax.swing.JDesktopPane();
-        ImageIcon icon = new ImageIcon ( getClass().getResource("/Imagenes/fondo_escritorio_transversal.png") );
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/Fondo_escritorio_transversal.png"));
         Image image = icon.getImage();
-        jp_desktop = new javax.swing.JPanel(){
+        Escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics grafico){
-                grafico.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        javax.swing.GroupLayout jp_desktopLayout = new javax.swing.GroupLayout(jp_desktop);
-        jp_desktop.setLayout(jp_desktopLayout);
-        jp_desktopLayout.setHorizontalGroup(
-            jp_desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jp_desktopLayout.setVerticalGroup(
-            jp_desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
-
-        Escritorio.setLayer(jp_desktop, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,6 +241,5 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JPanel jp_desktop;
     // End of variables declaration//GEN-END:variables
 }
