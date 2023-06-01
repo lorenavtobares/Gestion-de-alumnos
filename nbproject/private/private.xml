@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Facultad"/>
         <group>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/AlumnoData.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/MateriaData.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/ABMAlumnos.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Modelo/Alumno.java</file>
             <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/InscripcionData.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/ABMAlumnos.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/AlumnoData.java</file>
         </group>
     </open-files>
 </project-private>
