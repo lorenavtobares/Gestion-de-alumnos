@@ -40,7 +40,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         };
         btnAltaGuardar1 = new javax.swing.JButton();
         btnAltaLimpiar1 = new javax.swing.JButton();
-        btnAltaCerrar1 = new javax.swing.JButton();
         jtDni1 = new javax.swing.JTextField();
         jtNombre1 = new javax.swing.JTextField();
         jtApellido1 = new javax.swing.JTextField();
@@ -53,7 +52,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jtNombreUp2 = new javax.swing.JTextField();
         jdFechaNacimientoDelete2 = new com.toedter.calendar.JDateChooser();
         btnAltaGuardarUp2 = new javax.swing.JButton();
-        btnDeleteCerrar2 = new javax.swing.JButton();
         jtDniUp2 = new javax.swing.JTextField();
         btnBuscarV2 = new javax.swing.JButton();
         jpBajaAlumno = new javax.swing.JPanel(){
@@ -66,7 +64,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jtNombreUp3 = new javax.swing.JTextField();
         jdFechaNacimientoDelete3 = new com.toedter.calendar.JDateChooser();
         btnBuscarV3 = new javax.swing.JButton();
-        btnDeleteCerrar3 = new javax.swing.JButton();
         jtDniUp3 = new javax.swing.JTextField();
         btnAltaGuardarUp3 = new javax.swing.JButton();
         jpUpdateAlumno = new javax.swing.JPanel(){
@@ -74,7 +71,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 grafico.drawImage(image, 0, 0, getWidth(), getHeight(), this);
             }
         };
-        btnUpCerrar4 = new javax.swing.JButton();
         jtDniUp4 = new javax.swing.JTextField();
         jtApellidoUp4 = new javax.swing.JTextField();
         jtNombreUp4 = new javax.swing.JTextField();
@@ -82,6 +78,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         btnAltaGuardarUp4 = new javax.swing.JButton();
         jcbEstado4 = new javax.swing.JComboBox<>();
         jcbListaAlumnos4 = new javax.swing.JComboBox<>();
+        btnUpCerrar4 = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -101,13 +98,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAltaCerrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
-        btnAltaCerrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAltaCerrar1ActionPerformed(evt);
-            }
-        });
-
         jtDni1.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
         jtNombre1.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
@@ -124,9 +114,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jpNuevoAlumno.setLayout(jpNuevoAlumnoLayout);
         jpNuevoAlumnoLayout.setHorizontalGroup(
             jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNuevoAlumnoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAltaCerrar1))
             .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -140,20 +127,19 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(iconDniVerificado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconDniError)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jpNuevoAlumnoLayout.setVerticalGroup(
             jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNuevoAlumnoLayout.createSequentialGroup()
-                .addComponent(btnAltaCerrar1)
                 .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(65, 65, 65)
                         .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(iconDniVerificado)
                             .addComponent(iconDniError)))
                     .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(41, 41, 41)
                         .addComponent(jtDni1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,7 +147,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdFechaNacimiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(btnAltaGuardar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAltaLimpiar1)
@@ -186,13 +172,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDeleteCerrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
-        btnDeleteCerrar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCerrar2ActionPerformed(evt);
-            }
-        });
-
         jtDniUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
         btnBuscarV2.setText("jButton1");
@@ -206,9 +185,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jpAltaAlumno.setLayout(jpAltaAlumnoLayout);
         jpAltaAlumnoLayout.setHorizontalGroup(
             jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaAlumnoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnDeleteCerrar2))
             .addGroup(jpAltaAlumnoLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -220,13 +196,12 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(btnAltaGuardarUp2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscarV2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jpAltaAlumnoLayout.setVerticalGroup(
             jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAltaAlumnoLayout.createSequentialGroup()
-                .addComponent(btnDeleteCerrar2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addGroup(jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarV2))
@@ -240,7 +215,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jdFechaNacimientoDelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnAltaGuardarUp2)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jtpPanel.addTab("Alta de Alumno", jpAltaAlumno);
@@ -260,13 +235,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDeleteCerrar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
-        btnDeleteCerrar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCerrar3ActionPerformed(evt);
-            }
-        });
-
         jtDniUp3.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
         btnAltaGuardarUp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
@@ -281,9 +249,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jpBajaAlumno.setLayout(jpBajaAlumnoLayout);
         jpBajaAlumnoLayout.setHorizontalGroup(
             jpBajaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBajaAlumnoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnDeleteCerrar3))
             .addGroup(jpBajaAlumnoLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(jpBajaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -295,13 +260,12 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(btnAltaGuardarUp3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscarV3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jpBajaAlumnoLayout.setVerticalGroup(
             jpBajaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBajaAlumnoLayout.createSequentialGroup()
-                .addComponent(btnDeleteCerrar3)
-                .addGap(3, 3, 3)
+                .addGap(38, 38, 38)
                 .addGroup(jpBajaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarV3))
@@ -315,17 +279,10 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jdFechaNacimientoDelete3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnAltaGuardarUp3)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jtpPanel.addTab("Baja de alumno", jpBajaAlumno);
-
-        btnUpCerrar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
-        btnUpCerrar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpCerrar4ActionPerformed(evt);
-            }
-        });
 
         jtDniUp4.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
@@ -364,52 +321,56 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAltaGuardarUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addComponent(btnUpCerrar4))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jpUpdateAlumnoLayout.setVerticalGroup(
             jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUpdateAlumnoLayout.createSequentialGroup()
-                .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpCerrar4)
-                    .addGroup(jpUpdateAlumnoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtDniUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtApellidoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtNombreUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtDniUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtApellidoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtNombreUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnAltaGuardarUp4)
                 .addContainerGap())
         );
 
         jtpPanel.addTab("Actualizar Datos Personales", jpUpdateAlumno);
 
+        btnUpCerrar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
+        btnUpCerrar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpCerrar4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jtpPanel)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnUpCerrar4))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtpPanel)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(btnUpCerrar4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jtpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDeleteCerrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCerrar2ActionPerformed
-        // TODO add your handling code here:
-           this.dispose();
-    }//GEN-LAST:event_btnDeleteCerrar2ActionPerformed
 
     
     //HABILITA UN NUEVO ESTUDIANTE VISTA 2 -------------------------------------------------------------------------
@@ -535,14 +496,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAltaGuardarUp3ActionPerformed
 
-    private void btnDeleteCerrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCerrar3ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnDeleteCerrar3ActionPerformed
-
-    private void btnAltaCerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaCerrar1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnAltaCerrar1ActionPerformed
-
     // METODO LIMPIAR VISTA 1
     private void btnAltaLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaLimpiar1ActionPerformed
         jtDni1.setText("");
@@ -643,7 +596,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAltaCerrar1;
     private javax.swing.JButton btnAltaGuardar1;
     private javax.swing.JButton btnAltaGuardarUp2;
     private javax.swing.JButton btnAltaGuardarUp3;
@@ -651,8 +603,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAltaLimpiar1;
     private javax.swing.JButton btnBuscarV2;
     private javax.swing.JButton btnBuscarV3;
-    private javax.swing.JButton btnDeleteCerrar2;
-    private javax.swing.JButton btnDeleteCerrar3;
     private javax.swing.JButton btnUpCerrar4;
     private javax.swing.JLabel iconDniError;
     private javax.swing.JLabel iconDniVerificado;
