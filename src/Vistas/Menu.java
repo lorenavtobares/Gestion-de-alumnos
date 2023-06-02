@@ -27,6 +27,8 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
     
+    
+    
     private void centrarJinternalFrame (JInternalFrame i ){
     
         Dimension tamanioEscritorio =  Escritorio.getSize();
@@ -39,10 +41,13 @@ public class Menu extends javax.swing.JFrame {
         barra = new JMenuBar();
         Menu_Alumnos = new JMenu("Alumnos");
         Menu_Alumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/estudiante.png")));
+        Menu_Alumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Menu_Materias = new JMenu("Materias");
         Menu_Materias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/libros.png")));
+        Menu_Materias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Menu_Salir = new JMenu("Salir");
         Menu_Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/salir_sistema.png")));
+        Menu_Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         
         //Menu Alumnos        
         A_opcion2 = new JMenuItem("Lista inscripciones a materias");
