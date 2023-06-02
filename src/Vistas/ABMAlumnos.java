@@ -46,7 +46,11 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jdFechaNacimiento1 = new com.toedter.calendar.JDateChooser();
         iconDniVerificado = new javax.swing.JLabel();
         iconDniError = new javax.swing.JLabel();
-        jpAltaAlumno = new javax.swing.JPanel();
+        jpAltaAlumno = new javax.swing.JPanel(){
+            public void paintComponent(Graphics grafico){
+                grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jComboBox2 = new javax.swing.JComboBox<>();
         jtApellidoUp2 = new javax.swing.JTextField();
         jtNombreUp2 = new javax.swing.JTextField();
