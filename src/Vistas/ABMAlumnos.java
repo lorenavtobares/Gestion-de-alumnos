@@ -6,9 +6,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.time.*;
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -23,6 +25,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         iconDniError.setVisible(false);
         cargandoAlumnoDeshabilitadoV2();
         cargandoAlumnoHabilitadoV3();
+        cargandoAlumnosV4();
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +85,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         btnAltaGuardarUp4 = new javax.swing.JButton();
         jcbEstado4 = new javax.swing.JComboBox<>();
         jcbListaAlumnos4 = new javax.swing.JComboBox<>();
+        btnBuscarV4 = new javax.swing.JButton();
         btnUpCerrar4 = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
@@ -162,8 +166,10 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
         jComboBox2.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA ALUMNOS"));
 
+        jtApellidoUp2.setEditable(false);
         jtApellidoUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
 
+        jtNombreUp2.setEditable(false);
         jtNombreUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
         jdFechaNacimientoDelete2.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE NACIMIENTO"));
@@ -176,6 +182,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jtDniUp2.setEditable(false);
         jtDniUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
         btnBuscarV2.setText("jButton1");
@@ -226,8 +233,10 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
         jComboBox3.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA ALUMNOS"));
 
+        jtApellidoUp3.setEditable(false);
         jtApellidoUp3.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
 
+        jtNombreUp3.setEditable(false);
         jtNombreUp3.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
         jdFechaNacimientoDelete3.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE NACIMIENTO"));
@@ -239,6 +248,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jtDniUp3.setEditable(false);
         jtDniUp3.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
 
         btnAltaGuardarUp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
@@ -304,10 +314,23 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbEstado4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HABILITADO", "DESHABILITADO" }));
+        jcbEstado4.setToolTipText("");
         jcbEstado4.setBorder(javax.swing.BorderFactory.createTitledBorder("ESTADO"));
+        jcbEstado4.setName(""); // NOI18N
+        jcbEstado4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEstado4ActionPerformed(evt);
+            }
+        });
 
         jcbListaAlumnos4.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA ALUMNOS"));
+
+        btnBuscarV4.setText("jButton1");
+        btnBuscarV4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarV4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpUpdateAlumnoLayout = new javax.swing.GroupLayout(jpUpdateAlumno);
         jpUpdateAlumno.setLayout(jpUpdateAlumnoLayout);
@@ -324,14 +347,19 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jtDniUp4)
                             .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAltaGuardarUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addGroup(jpUpdateAlumnoLayout.createSequentialGroup()
+                        .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscarV4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jpUpdateAlumnoLayout.setVerticalGroup(
             jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUpdateAlumnoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarV4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcbListaAlumnos4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtDniUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -342,7 +370,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btnAltaGuardarUp4)
                 .addContainerGap())
         );
@@ -376,7 +404,16 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+     //VISTA 2
+    private void cargandoAlumnoDeshabilitadoV2() {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jComboBox2.removeAllItems();
+        List <Alumno> arrayAlumnosD = Menu.alumnoEscritorio.listarDeshabilitados();
+        for (Alumno alumno : arrayAlumnosD) {
+            jComboBox2.addItem(alumno);
+        } 
+       
+    }
     //HABILITA UN NUEVO ESTUDIANTE VISTA 2 -------------------------------------------------------------------------
     private void btnAltaGuardarUp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardarUp2ActionPerformed
             
@@ -385,21 +422,28 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         String apellido = jtApellidoUp2.getText();
         String nombre = jtNombreUp2.getText();
         LocalDate fechaNacimiento = jdFechaNacimientoDelete2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        cargandoAlumnoDeshabilitadoV2();
+        
         if (!dni.isEmpty() ) {
            // iconDniVerificado.setVisible(true);
            // iconDniError.setVisible(false);
             if (!apellido.isEmpty()) {
                 if (!nombre.isEmpty()) {
                         Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, true);
-                        ArrayList<Alumno> arrayAlumnosD = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarDeshabilitados();
+                        List<Alumno> arrayAlumnosD = Menu.alumnoEscritorio.listarDeshabilitados();
                         if(arrayAlumnosD.size() >= 0 ){
-                            cargandoAlumnoDeshabilitadoV2();
+                          
                             int posicion = jComboBox2.getSelectedIndex();
                             
                             int id = arrayAlumnosD.get(posicion).getId_alumno();
+                            
+                            
                             Menu.alumnoEscritorio.habilitarAlumno(id);
                             Menu.alumnoEscritorio.actualizarAlumno(estudiante);
+                            Menu.alumnoEscritorio.listarHabilitados();
+                           
+                            Menu.alumnoEscritorio.listarDeshabilitados();
+                            
+                            
                             
 
                             //esta de prueba se va a pasar a un metodo
@@ -432,8 +476,70 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAltaGuardarUp2ActionPerformed
 
+    //CARGANDO ALUMNOS Y ESTADO EN LA VISTA 4
+      private void cargandoAlumnosV4() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jcbListaAlumnos4.removeAllItems();
+        List <Alumno> arrayAlumnos =  Menu.alumnoEscritorio.listarTodosAlumnos();
+        for (Alumno alumno : arrayAlumnos) {
+            jcbListaAlumnos4.addItem(alumno);
+        }
+        // cargando lista de estado
+          jcbEstado4.addItem("Deshabilitado");
+          jcbEstado4.addItem("Habilitado");
+          
+    }
+    
+    
+    //ACTUALIZA LOS DATOS DEL ESTUDIANTE V4
     private void btnAltaGuardarUp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardarUp4ActionPerformed
         // TODO add your handling code here:
+        String dni = jtDniUp4.getText();
+        int dniParceado = Integer.parseInt(dni);
+        String apellido = jtApellidoUp4.getText();
+        String nombre = jtNombreUp4.getText();
+        LocalDate fechaNacimiento = jdFechaNacimientoUp4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int estadoItem = -1;
+        estadoItem = jcbEstado4.getSelectedIndex();
+        if (!dni.isEmpty()) {
+            iconDniVerificado.setVisible(true);
+            iconDniError.setVisible(false);
+            if (!apellido.isEmpty()) {
+                if (!nombre.isEmpty()) {
+                    if(estadoItem != -1){
+                        if(estadoItem == 0){
+                           Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, false);
+                           Menu.alumnoEscritorio.actualizarAlumno(estudiante);
+                           // Menu.alumnoEscritorio.guardarAlumno(estudiante);
+                        } else{
+                            Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, true);
+                            Menu.alumnoEscritorio.actualizarAlumno(estudiante);
+                           // Menu.alumnoEscritorio.guardarAlumno(estudiante);
+                        }  
+                           
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe seleccionar un estado", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+                    }
+                        
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+                    jtNombre1.requestFocus();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Debe ingresar un apellido", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+                jtApellido1.requestFocus();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingresar un documento", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            iconDniVerificado.setVisible(false);
+            iconDniError.setVisible(true);
+            jtDni1.requestFocus();
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnAltaGuardarUp4ActionPerformed
 
     private void btnUpCerrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpCerrar4ActionPerformed
@@ -442,7 +548,8 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
  
     //VISTA 3
     private void cargandoAlumnoHabilitadoV3() {
-        ArrayList<Alumno> arrayAlumnosA = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarHabilitados();
+        jComboBox3.removeAllItems();
+        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
         for (Alumno alumno : arrayAlumnosA) {
             jComboBox3.addItem(alumno);
         } 
@@ -455,6 +562,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         String apellido = jtApellidoUp3.getText();
         String nombre = jtNombreUp3.getText();
         LocalDate fechaNacimiento = jdFechaNacimientoDelete3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
         int posicion=0 , id=0;
         if (!dni.isEmpty() ) {
            // iconDniVerificado.setVisible(true);
@@ -462,17 +570,18 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             if (!apellido.isEmpty()) {
                 if (!nombre.isEmpty()) {
                         Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, true);
-                        ArrayList<Alumno> arrayAlumnosA = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarHabilitados();
+                        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
                         if(arrayAlumnosA.size() >= 0 ){
-                            cargandoAlumnoHabilitadoV3();
+                           
                             posicion = jComboBox3.getSelectedIndex();
                             id = arrayAlumnosA.get(posicion).getId_alumno();
                             
-                            Menu.alumnoEscritorio.actualizarAlumno(estudiante);
                             Menu.alumnoEscritorio.deshabilitandoAlumno(id);
+                            Menu.alumnoEscritorio.actualizarAlumno(estudiante);
+                            Menu.alumnoEscritorio.listarHabilitados();
                             Menu.alumnoEscritorio.listarDeshabilitados();
-                            
-
+                            cargandoAlumnoHabilitadoV3() ;
+                           
                             //esta de prueba se va a pasar a un metodo
                                 jtDniUp3.setText("");
                                 jtApellidoUp3.setText("");
@@ -543,11 +652,13 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAltaGuardar1ActionPerformed
 
     
-    //muestra los datos de la vista Alta alumno segun la posicion de la lista -------------------
+    //muestra los datos de la vista Alta alumno V2 segun la posicion de la lista -------------------
     private void btnBuscarV2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarV2MouseClicked
         // TODO add your handling code here:
+         
          int posicion = -1;
-            ArrayList<Alumno> arrayAlumnosD = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarDeshabilitados();
+            
+            List<Alumno> arrayAlumnosD = Menu.alumnoEscritorio.listarDeshabilitados();
             formatoCalendario();
             posicion = jComboBox2.getSelectedIndex();
             
@@ -563,11 +674,13 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarV2MouseClicked
 
-    //muestra los datos de la vista BAJA alumno segun la posicion de la lista -------------------
+    //muestra los datos de la vista BAJA  alumno  V3 segun la posicion de la lista -------------------
     private void btnBuscarV3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarV3MouseClicked
         // TODO add your handling code here:
+        
+        
           int posicion = -1;
-            ArrayList<Alumno> arrayAlumnosA = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarHabilitados();
+            List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
             formatoCalendario();
             posicion = jComboBox3.getSelectedIndex();
             
@@ -579,9 +692,54 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             
         
         } else{
-           JOptionPane.showMessageDialog(null, "No se encuentran alumno para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
+           JOptionPane.showMessageDialog(null, "No se encuentran alumno para dar de baja", "",JOptionPane.WARNING_MESSAGE); 
         }
+        
+     
+        
+        
     }//GEN-LAST:event_btnBuscarV3MouseClicked
+
+    //muestra los datos de la vista ACTUALIZAR DATOS PERSONALES V4 segun la posicion de la lista -------------------
+    private void btnBuscarV4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarV4MouseClicked
+        // TODO add your handling code here:
+           int posicion = -1 ;
+           boolean estado = true ;
+           
+            List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarTodosAlumnos();
+            formatoCalendario();
+            posicion = jcbListaAlumnos4.getSelectedIndex(); //recibe lista
+            estado = arrayAlumnos.get(posicion).getEstado();
+           
+            System.out.println(estado);
+            
+            if ( posicion != -1){
+                jtNombreUp4.setText(arrayAlumnos.get(posicion).getNombre());
+                jtApellidoUp4.setText(arrayAlumnos.get(posicion).getApellido());
+                jtDniUp4.setText(arrayAlumnos.get(posicion).getDni() + "");
+                jdFechaNacimientoUp4.setDateFormatString(arrayAlumnos.get(posicion).getFecha_nacimiento() + "");
+               // jcbEstado4.setSelectedItem(arrayAlumnos.get(posicion).getEstado());
+
+            if(estado == false ){
+                jcbEstado4.setSelectedIndex(0);
+            } else{
+                jcbEstado4.setSelectedIndex(1);
+            }
+            arrayAlumnos.clear();
+        
+        } else{
+           JOptionPane.showMessageDialog(null, "No se encuentran alumno ", "",JOptionPane.WARNING_MESSAGE); 
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnBuscarV4MouseClicked
+
+    private void jcbEstado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstado4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbEstado4ActionPerformed
 
     public void formatoCalendario(){
         //jdFechaNacimiento.setLocale(new Locale("es"));
@@ -607,6 +765,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAltaLimpiar1;
     private javax.swing.JButton btnBuscarV2;
     private javax.swing.JButton btnBuscarV3;
+    private javax.swing.JButton btnBuscarV4;
     private javax.swing.JButton btnUpCerrar4;
     private javax.swing.JLabel iconDniError;
     private javax.swing.JLabel iconDniVerificado;
@@ -638,16 +797,10 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jtpPanel;
     // End of variables declaration//GEN-END:variables
 
+  
+
    
-    //VISTA 2
-    private void cargandoAlumnoDeshabilitadoV2() {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        ArrayList<Alumno> arrayAlumnosD = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarDeshabilitados();
-        for (Alumno alumno : arrayAlumnosD) {
-            jComboBox2.addItem(alumno);
-        } 
-       
-    }
+   
 
     
 }

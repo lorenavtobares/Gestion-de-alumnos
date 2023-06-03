@@ -1,5 +1,6 @@
 package Vistas;
 
+import Modelo.Materia;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -43,15 +44,23 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
 
         tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Apellido", "Nombre", "DNI"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaMostrar);
 
         jpFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 219, 730, 230));
@@ -61,7 +70,6 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         jLabel2.setText("Ficha Mostrar Todos los Alumnos inscripto a una Materia");
         jpFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
-        jcMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIA"));
         jpFondo.add(jcMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 475, 51));
 
@@ -130,7 +138,7 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcMaterias;
+    private javax.swing.JComboBox<Materia> jcMaterias;
     private javax.swing.JPanel jpEstado;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JRadioButton jrbInscriptos;

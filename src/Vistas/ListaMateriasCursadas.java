@@ -1,8 +1,11 @@
 
 package Vistas;
+import Modelo.Alumno;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
@@ -10,6 +13,7 @@ public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
 
     public ListaMateriasCursadas() {
         initComponents();
+        cargandoAlumnos();
     }
 
 
@@ -50,7 +54,6 @@ public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 184, 754, 210));
 
-        jcAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcAlumnos.setBorder(javax.swing.BorderFactory.createTitledBorder("Alumno"));
         jPanel1.add(jcAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 48, 600, 51));
 
@@ -118,16 +121,29 @@ public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void cargandoAlumnos() {
+        
+         jcAlumnos.removeAllItems();
+        ArrayList <Alumno> arrayAlumnos = (ArrayList<Alumno>) Menu.alumnoEscritorio.listarTodosAlumnos();
+        for (Alumno alumno : arrayAlumnos) {
+            jcAlumnos.addItem(alumno);
+        } 
+    
+    
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcAlumnos;
+    private javax.swing.JComboBox<Alumno> jcAlumnos;
     private javax.swing.JPanel jpEstadoAlumnos;
     private javax.swing.JRadioButton jrbInscriptos;
     private javax.swing.JRadioButton jrbNoInscriptos;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JTable tablaMostrar;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 public class AlumnoData {
 
     private final Connection con;
-    private static List<Alumno> list_alumnos = new ArrayList<Alumno>();
-    private static List<Alumno> list_alumnosD = new ArrayList<Alumno>();
+   // private static List<Alumno> list_alumnos = new ArrayList<Alumno>();
+   // private static List<Alumno> list_alumnosD = new ArrayList<Alumno>();
     
     public AlumnoData(){
         con = Conexion.getConexion();
@@ -75,6 +75,10 @@ public class AlumnoData {
             
             stmt.executeUpdate();           
             JOptionPane.showMessageDialog(null, "Registro actualizado"," ",JOptionPane.INFORMATION_MESSAGE);
+           
+            
+            
+            
         }
         catch ( SQLException ex )
         {
@@ -88,6 +92,12 @@ public class AlumnoData {
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
     }//.actualizarAlumno()
+    
+    
+    
+    
+    
+    
     
     public Alumno buscarAlumno ( int idAlumno ){
         Alumno alumnoN = null;
@@ -195,7 +205,7 @@ public class AlumnoData {
     public List <Alumno> listarHabilitados ( ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        
+        List<Alumno> list_alumnos = new ArrayList<Alumno>(); // se agregp
         String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
                         + "FROM alumno "
                         + "WHERE estado = 1";
@@ -212,7 +222,8 @@ public class AlumnoData {
                 alumnoN.setDni(resultado.getInt("dni"));
                 alumnoN.setApellido(resultado.getString("apellido"));
                 alumnoN.setNombre(resultado.getString("nombre"));
-                alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());    
+                alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());
+                alumnoN.setEstado(true); // se agrego
                 list_alumnos.add(alumnoN);
             }   
         }
@@ -225,6 +236,10 @@ public class AlumnoData {
             catch ( SQLException ex )
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
+        
+        
+       
+        
         
         return list_alumnos;
     }
@@ -262,7 +277,7 @@ public class AlumnoData {
     public List <Alumno> listarDeshabilitados ( ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        
+        List<Alumno> list_alumnosD = new ArrayList<Alumno>();
         String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
                         + "FROM alumno "
                         + "WHERE estado = 0";
@@ -293,13 +308,27 @@ public class AlumnoData {
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
         
+       
+        
+        
+        
         return list_alumnosD;
     }
     
+    //se agrego
+    public List <Alumno> listarTodosAlumnos ( ) { //COMPROBADO
+
+        ArrayList <Alumno> array_alumnos = new ArrayList();
+        
+        array_alumnos.addAll(listarHabilitados());
+        array_alumnos.addAll(listarDeshabilitados());
+        
+        
+        
+        return array_alumnos;
+        
+        
     
-    
-    
-    
-    
+    }  
     
 }

@@ -1,9 +1,12 @@
 
 package Vistas;
+import Modelo.Alumno;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 
@@ -13,6 +16,7 @@ public class Calificaciones extends javax.swing.JInternalFrame {
         initComponents();
         botonTransparente(btnCerrar);    
         panelFormularios(jpFondo, 800, 450);
+        cargandoAlumnos();
     }
 
     
@@ -55,7 +59,6 @@ public class Calificaciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbListaAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbListaAlumnos.setBorder(javax.swing.BorderFactory.createTitledBorder("ALUMNOS"));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -131,9 +134,19 @@ public class Calificaciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JComboBox<String> jcbListaAlumnos;
+    private javax.swing.JComboBox<Alumno> jcbListaAlumnos;
     private javax.swing.JComboBox<String> jcbListaMaterias;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JTextField jtNota;
     // End of variables declaration//GEN-END:variables
+
+    private void cargandoAlumnos() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List <Alumno> arrayAlumnos = (List<Alumno>) Menu.alumnoEscritorio.listarTodosAlumnos();
+        for (Alumno alumno : arrayAlumnos) {
+            jcbListaAlumnos.addItem(alumno);
+        } 
+    
+    }
 }
