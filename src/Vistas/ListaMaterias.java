@@ -27,37 +27,29 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
         };
-        btnActivos = new javax.swing.JButton();
-        btnBajar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         labelTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMostrar = new javax.swing.JTable();
-        jBLimpiar = new javax.swing.JButton();
+        jpEstadoMaterias = new javax.swing.JPanel();
+        jrbMateriasActivas = new javax.swing.JRadioButton();
+        jrbMateriasNoActivas = new javax.swing.JRadioButton();
 
-        btnActivos.setText("Activos");
-        btnActivos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActivosActionPerformed(evt);
-            }
-        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBajar.setText("Bajados");
-        btnBajar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBajarActionPerformed(evt);
-            }
-        });
-
-        btnCerrar.setText("Cerrar");
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
+        btnCerrar.setBorder(null);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 53, 40));
 
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/libros.png"))); // NOI18N
         labelTitulo.setText("Ficha mostrar todas las materias");
+        jPanel1.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,52 +69,39 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablaMostrar);
 
-        jBLimpiar.setText("Limpiar");
-        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLimpiarActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 750, 260));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(btnActivos)
-                        .addGap(268, 268, 268)
-                        .addComponent(btnBajar)
-                        .addGap(259, 259, 259)
-                        .addComponent(jBLimpiar)
-                        .addGap(358, 358, 358)
-                        .addComponent(btnCerrar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelTitulo)
-                .addGap(512, 512, 512))
+        jpEstadoMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado de las materias"));
+        jpEstadoMaterias.setBackground(new Color(0,0,0,0));
+
+        jrbMateriasActivas.setText("Activas");
+        jrbMateriasActivas.setBackground(new Color(0,0,0,0));
+
+        jrbMateriasNoActivas.setText("No Activas");
+        jrbMateriasNoActivas.setBackground(new Color(0,0,0,0));
+
+        javax.swing.GroupLayout jpEstadoMateriasLayout = new javax.swing.GroupLayout(jpEstadoMaterias);
+        jpEstadoMaterias.setLayout(jpEstadoMateriasLayout);
+        jpEstadoMateriasLayout.setHorizontalGroup(
+            jpEstadoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpEstadoMateriasLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jrbMateriasActivas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(jrbMateriasNoActivas)
+                .addGap(147, 147, 147))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(labelTitulo)
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActivos)
-                    .addComponent(btnBajar)
-                    .addComponent(btnCerrar)
-                    .addComponent(jBLimpiar))
-                .addGap(61, 61, 61))
+        jpEstadoMateriasLayout.setVerticalGroup(
+            jpEstadoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEstadoMateriasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpEstadoMateriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbMateriasActivas)
+                    .addComponent(jrbMateriasNoActivas))
+                .addContainerGap())
         );
+
+        jPanel1.add(jpEstadoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 570, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,79 +111,11 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivosActionPerformed
-        // TODO add your handling code here:
-        
-        int year;
-        String  nombre, fechaParceada;
-        boolean estado;
-        
-            DefaultTableModel tabla = (DefaultTableModel) tablaMostrar.getModel();
-
-            ArrayList<Materia> arrayMaterias = (ArrayList<Materia>) Menu.materiaEscritorio.listarHabilitadas();
-
-            if(arrayMaterias.size() > 0) {
-                 for (int m = 0; m < arrayMaterias.size(); m++) {
-                year = arrayMaterias.get(m).getAnio();
-                nombre = arrayMaterias.get(m).getNombre();
-                estado = arrayMaterias.get(m).getEstado();
-                
-
-                tabla.addRow(new Object[]{ nombre, year, estado});
-
-                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay materias habilitadas" , "", JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-           
-        
-        
-    }//GEN-LAST:event_btnActivosActionPerformed
-
-    private void btnBajarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajarActionPerformed
-        // TODO add your handling code here:
-        int year;
-        String  nombre, fechaParceada;
-        boolean estado;
-        
-            DefaultTableModel tabla = (DefaultTableModel) tablaMostrar.getModel();
-
-            ArrayList<Materia> arrayMateriasD = (ArrayList<Materia>) Menu.materiaEscritorio.listarDeshabilitadas();
-            
-            if (arrayMateriasD.size() >0 ) {
-                 for (int m = 0; m < arrayMateriasD.size(); m++) {
-                year = arrayMateriasD.get(m).getAnio();
-                nombre = arrayMateriasD.get(m).getNombre();
-                estado = arrayMateriasD.get(m).getEstado();
-                
-
-                tabla.addRow(new Object[]{ nombre, year, estado});
-
-                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay materias dadas de baja " , "", JOptionPane.INFORMATION_MESSAGE);
-            }
-          
-        
-    }//GEN-LAST:event_btnBajarActionPerformed
-
-    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        // TODO add your handling code here:
-       DefaultTableModel tabla = (DefaultTableModel) tablaMostrar.getModel();
-       while (tablaMostrar.getRowCount() > 0){
-        tabla.removeRow(0);
-       } 
-    }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
@@ -213,12 +124,12 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActivos;
-    private javax.swing.JButton btnBajar;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton jBLimpiar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpEstadoMaterias;
+    private javax.swing.JRadioButton jrbMateriasActivas;
+    private javax.swing.JRadioButton jrbMateriasNoActivas;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JTable tablaMostrar;
     // End of variables declaration//GEN-END:variables

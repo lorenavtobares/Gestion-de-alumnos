@@ -75,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
         
         
         //Menu Materias
-        M_opcion1 = new JMenuItem("Punto 2 _ Lista Materias"); // ???????????????????
+        M_opcion1 = new JMenuItem("Lista Materias"); // ???????????????????
         M_opcion1.addActionListener((java.awt.event.ActionEvent evt) -> {
             Escritorio.removeAll();
             Escritorio.repaint();
