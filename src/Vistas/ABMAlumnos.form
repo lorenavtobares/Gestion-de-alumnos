@@ -210,12 +210,10 @@
                           <Component id="jtNombreUp2" alignment="0" pref="553" max="32767" attributes="0"/>
                           <Component id="jtDniUp2" alignment="0" max="32767" attributes="0"/>
                           <Component id="jdFechaNacimientoDelete2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jcbListaAlumnosDeshabilitados" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAltaGuardarUp2" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnBuscarV2" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -223,10 +221,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="btnBuscarV2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jcbListaAlumnosDeshabilitados" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jtDniUp2" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -243,7 +238,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="jcbListaAlumnosDeshabilitados">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -254,6 +249,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbListaAlumnosDeshabilitadosActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
@@ -308,14 +306,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnBuscarV2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarV2MouseClicked"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jpBajaAlumno">
@@ -340,12 +330,10 @@
                           <Component id="jtNombreUp3" alignment="0" pref="553" max="32767" attributes="0"/>
                           <Component id="jtDniUp3" alignment="0" max="32767" attributes="0"/>
                           <Component id="jdFechaNacimientoDelete3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jcbListaAlumnosHabilitados" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAltaGuardarUp3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnBuscarV3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -353,10 +341,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox3" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="btnBuscarV3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jcbListaAlumnosHabilitados" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jtDniUp3" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -373,7 +358,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JComboBox" name="jcbListaAlumnosHabilitados">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -384,6 +369,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbListaAlumnosHabilitadosActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
@@ -416,14 +404,6 @@
                   </Border>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnBuscarV3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarV3MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtDniUp3">
               <Properties>
@@ -476,13 +456,9 @@
                                   <Component id="btnAltaGuardarUp4" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jcbListaAlumnos4" min="-2" pref="553" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnBuscarV4" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jcbListaAlumnosUpDatos" min="-2" pref="553" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -490,10 +466,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnBuscarV4" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcbListaAlumnos4" min="-2" pref="60" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jcbListaAlumnosUpDatos" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtDniUp4" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -504,7 +477,7 @@
                       <Component id="jdFechaNacimientoUp4" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jcbEstado4" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="56" max="32767" attributes="0"/>
                       <Component id="btnAltaGuardarUp4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -579,7 +552,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jcbListaAlumnos4">
+            <Component class="javax.swing.JComboBox" name="jcbListaAlumnosUpDatos">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
@@ -590,17 +563,12 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbListaAlumnosUpDatosActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnBuscarV4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarV4MouseClicked"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

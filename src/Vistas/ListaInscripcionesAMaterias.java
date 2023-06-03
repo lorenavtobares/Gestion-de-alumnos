@@ -40,8 +40,6 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         jrbNoInscriptos = new javax.swing.JRadioButton();
         jrbInscriptos = new javax.swing.JRadioButton();
 
-        jpFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -63,15 +61,11 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablaMostrar);
 
-        jpFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 219, 730, 230));
-
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/libros.png"))); // NOI18N
         jLabel2.setText("Ficha Mostrar Todos los Alumnos inscripto a una Materia");
-        jpFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         jcMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIA"));
-        jpFondo.add(jcMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 475, 51));
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
         btnCerrar.setBorder(null);
@@ -81,7 +75,6 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jpFondo.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 45, 38));
 
         jpEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado de los alumnos"));
         jpEstado.setBackground(new Color(0,0,0,0));
@@ -113,17 +106,50 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jpFondo.add(jpEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 470, 70));
+        javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
+        jpFondo.setLayout(jpFondoLayout);
+        jpFondoLayout.setHorizontalGroup(
+            jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel2)
+                .addGap(148, 148, 148)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jpFondoLayout.setVerticalGroup(
+            jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(jpFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

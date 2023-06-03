@@ -35,8 +35,6 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         jrbMateriasActivas = new javax.swing.JRadioButton();
         jrbMateriasNoActivas = new javax.swing.JRadioButton();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
         btnCerrar.setBorder(null);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -44,12 +42,10 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 53, 40));
 
         labelTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/libros.png"))); // NOI18N
         labelTitulo.setText("Ficha mostrar todas las materias");
-        jPanel1.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,8 +64,6 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tablaMostrar);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 750, 260));
 
         jpEstadoMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado de las materias"));
         jpEstadoMaterias.setBackground(new Color(0,0,0,0));
@@ -101,7 +95,35 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jpEstadoMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 570, 60));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(labelTitulo)
+                .addGap(202, 202, 202)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jpEstadoMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(labelTitulo))
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jpEstadoMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +133,7 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
