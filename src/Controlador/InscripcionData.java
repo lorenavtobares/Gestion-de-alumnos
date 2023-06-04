@@ -66,10 +66,10 @@ public class InscripcionData {
     } // inscribirAlumno() 
     
     /*<-- READ -->*/
-    public void listarInscripciones() {
+    public void listarInscripciones( ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        
+        List <Inscripcion> array_Inscripciones= new ArrayList<Inscripcion>();
         String query    = "SELECT a.dni , a.apellido, a.nombre, m.nombre AS nombreMateria "
                         + "FROM inscripcion AS i "
                         + "JOIN alumno AS a "
@@ -77,6 +77,7 @@ public class InscripcionData {
                         + "JOIN materia AS m "
                         + "ON m.id_materia = i.id_materia "
                         + "ORDER BY a.dni";
+        
         
         try
         {    
@@ -110,43 +111,45 @@ public class InscripcionData {
             }
         }
         
+        
     } // listarInscripciones()
     
-    public void buscarInscripcionesIDUsuario ( int idAlumno ) {
+    public void  buscarInscripcionesDNIsuario ( int dniAlumno ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        
+        int contador=0;
+        List <String> arrayMateriasInscriptas = new ArrayList ();
         String query    = "SELECT a.dni , a.apellido, a.nombre, m.nombre AS nombreMateria "
                         + "FROM inscripcion AS i "
                         + "JOIN alumno AS a "
                         + "ON i.id_alumno = a.id_alumno "
                         + "JOIN materia AS m "
                         + "ON i.id_materia = m.id_materia "
-                        + "WHERE i.id_materia = ? "
-                        + "ORDER BY a.dni";
+                        + "WHERE a.dni = ? "
+                        + "ORDER BY a.dni"; //ordena
         
         try
         {    
             stmt = con.prepareStatement( query );
-            stmt.setInt( 1, idAlumno );
-            stmt.setInt( 2, idAlumno );
-            resultado = stmt.executeQuery();
+            stmt.setInt( 1, dniAlumno );
             
-            System.out.println("\n-------------------------------------------------------------------------------------");
-            System.out.printf("%-20s %-20s %-20s %-20s", "DNI", "APELLIDO", "NOMBRE", "MATERIA");
-            System.out.println("\n-------------------------------------------------------------------------------------");
+            resultado = stmt.executeQuery();
             
             while ( resultado.next() ) 
             {
+                
+                contador++;
                 String dni = String.valueOf( resultado.getInt( "dni" ) );
                 String apellido = resultado.getString( "apellido" );
                 String nombre = resultado.getString( "nombre" );
                 String nombreMateria = resultado.getString( "nombreMateria" );
                 
-                System.out.format("%-20s %-20s %-20s %-20s", dni , apellido , nombre , nombreMateria);
-                System.out.println();
+                
+               
+                
+                
             }
-            System.out.println("\n-------------------------------------------------------------------------------------");
+           
             
         } catch ( SQLException ex ) {
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );

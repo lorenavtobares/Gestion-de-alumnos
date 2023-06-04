@@ -1,8 +1,11 @@
 package Vistas;
 
+import Modelo.Alumno;
+import Modelo.Materia;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 public class InscripcionesMaterias extends javax.swing.JInternalFrame {
@@ -11,6 +14,8 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
     public InscripcionesMaterias() {
         initComponents();
         botonTransparente(btnCerrar);
+        cargandoAlumnos();
+        cargandoMaterias();
     }
 
  
@@ -35,10 +40,8 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
 
         jpFondo.setSize(800, 450);
 
-        jcAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcAlumnos.setBorder(javax.swing.BorderFactory.createTitledBorder("ALUMNO"));
 
-        jcMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIA"));
 
         btnInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar.png"))); // NOI18N
@@ -123,9 +126,34 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnInscribir;
-    private javax.swing.JComboBox<String> jcAlumnos;
-    private javax.swing.JComboBox<String> jcMaterias;
+    private javax.swing.JComboBox<Alumno> jcAlumnos;
+    private javax.swing.JComboBox<Materia> jcMaterias;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
+
+    private void cargandoAlumnos() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         jcAlumnos.removeAllItems();
+        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
+        
+        for (Alumno alumno : arrayAlumnosA) {
+            jcAlumnos.addItem(alumno);
+        } 
+    
+    
+    
+    }
+
+    private void cargandoMaterias() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jcMaterias.removeAllItems();
+        List<Materia> arrayMaterias = Menu.materiaEscritorio.listarTodasLasMaterias();
+        
+        for (Materia alumno : arrayMaterias) {
+            jcMaterias.addItem(alumno);
+        } 
+    
+    
+    }
 }

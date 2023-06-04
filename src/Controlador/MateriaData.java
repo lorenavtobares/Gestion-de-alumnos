@@ -4,6 +4,7 @@ import Conexion.*;
 import Modelo.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class MateriaData {
@@ -273,7 +274,21 @@ public class MateriaData {
     }
     
     
+     //se agrego
+    public List <Materia> listarTodasLasMaterias ( ) { //COMPROBADO
+
+        ArrayList <Materia> array_materias = new ArrayList();
+        
+        array_materias.addAll(listarHabilitadas());
+        array_materias.addAll(listarDeshabilitadas());
+        
+        
+        
+        return array_materias;
+        
+        
     
+    }  
     
     
     

@@ -32,15 +32,6 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         btnMateriaNuevaLimpiar = new javax.swing.JButton();
         jtMateriaNuevaNueva = new javax.swing.JTextField();
         jtMateriaNuevaAnio = new javax.swing.JTextField();
-        jpAltaMateria = new javax.swing.JPanel(){
-            public void paintComponent(Graphics grafico){
-                grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
-            }
-        };
-        jcbMateriaAltaListaNoHab = new javax.swing.JComboBox<>();
-        jtMateriaAltaNombre = new javax.swing.JTextField();
-        jtMateriaAltaAnio = new javax.swing.JTextField();
-        btnMateriaAltaHabilitar = new javax.swing.JButton();
         jpBajaMateria = new javax.swing.JPanel(){
             public void paintComponent(Graphics grafico){
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
@@ -60,6 +51,15 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         jtMateriaUpNombre = new javax.swing.JTextField();
         jcbMateriaUpEstado = new javax.swing.JComboBox<>();
         btnMateriaUp = new javax.swing.JButton();
+        jpAltaMateria = new javax.swing.JPanel(){
+            public void paintComponent(Graphics grafico){
+                grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
+        jcbMateriaAltaListaNoHab = new javax.swing.JComboBox<>();
+        jtMateriaAltaNombre = new javax.swing.JTextField();
+        jtMateriaAltaAnio = new javax.swing.JTextField();
+        btnMateriaAltaHabilitar = new javax.swing.JButton();
         btnCerrarmaterias = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 153));
@@ -104,7 +104,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
                 .addComponent(jtMateriaNuevaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtMateriaNuevaAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(btnMateriaNuevaGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMateriaNuevaLimpiar)
@@ -112,55 +112,6 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         );
 
         jtpMaterias.addTab("Nueva Materia", jpNuevaMateria);
-
-        jcbMateriaAltaListaNoHab.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
-
-        jtMateriaAltaNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
-
-        jtMateriaAltaAnio.setBorder(javax.swing.BorderFactory.createTitledBorder("AÑO"));
-
-        btnMateriaAltaHabilitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/habilitar.png"))); // NOI18N
-        btnMateriaAltaHabilitar.setText("Habilitar Materia");
-        btnMateriaAltaHabilitar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMateriaAltaHabilitarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jpAltaMateriaLayout = new javax.swing.GroupLayout(jpAltaMateria);
-        jpAltaMateria.setLayout(jpAltaMateriaLayout);
-        jpAltaMateriaLayout.setHorizontalGroup(
-            jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAltaMateriaLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
-                        .addComponent(jtMateriaAltaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
-                        .addComponent(jcbMateriaAltaListaNoHab, 0, 553, Short.MAX_VALUE)
-                        .addGap(119, 119, 119))
-                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
-                        .addGroup(jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnMateriaAltaHabilitar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtMateriaAltaAnio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jpAltaMateriaLayout.setVerticalGroup(
-            jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAltaMateriaLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jcbMateriaAltaListaNoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtMateriaAltaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtMateriaAltaAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(btnMateriaAltaHabilitar)
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-
-        jtpMaterias.addTab("Alta de Materia", jpAltaMateria);
 
         jcbMateriaBajaListaHab.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
 
@@ -206,7 +157,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
                 .addComponent(jtMateriaBajaAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(btnMateriaBajaEliminar)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jtpMaterias.addTab("Baja de Materia", jpBajaMateria);
@@ -261,10 +212,59 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
                 .addComponent(jcbMateriaUpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btnMateriaUp)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtpMaterias.addTab("Actualizar datos", jpActualizarDatosMateria);
+
+        jcbMateriaAltaListaNoHab.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
+
+        jtMateriaAltaNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
+
+        jtMateriaAltaAnio.setBorder(javax.swing.BorderFactory.createTitledBorder("AÑO"));
+
+        btnMateriaAltaHabilitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/habilitar.png"))); // NOI18N
+        btnMateriaAltaHabilitar.setText("Habilitar Materia");
+        btnMateriaAltaHabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMateriaAltaHabilitarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpAltaMateriaLayout = new javax.swing.GroupLayout(jpAltaMateria);
+        jpAltaMateria.setLayout(jpAltaMateriaLayout);
+        jpAltaMateriaLayout.setHorizontalGroup(
+            jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaMateriaLayout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
+                        .addComponent(jtMateriaAltaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
+                        .addComponent(jcbMateriaAltaListaNoHab, 0, 553, Short.MAX_VALUE)
+                        .addGap(119, 119, 119))
+                    .addGroup(jpAltaMateriaLayout.createSequentialGroup()
+                        .addGroup(jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnMateriaAltaHabilitar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtMateriaAltaAnio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jpAltaMateriaLayout.setVerticalGroup(
+            jpAltaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaMateriaLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jcbMateriaAltaListaNoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtMateriaAltaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtMateriaAltaAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(btnMateriaAltaHabilitar)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jtpMaterias.addTab("Alta de Materia", jpAltaMateria);
 
         btnCerrarmaterias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
         btnCerrarmaterias.addActionListener(new java.awt.event.ActionListener() {
@@ -287,17 +287,17 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnCerrarmaterias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtpMaterias))
+                .addComponent(jtpMaterias, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMateriaNuevaGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaNuevaGuardarActionPerformed
-        
-    }//GEN-LAST:event_btnMateriaNuevaGuardarActionPerformed
-
     private void btnMateriaNuevaLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaNuevaLimpiarActionPerformed
+        jtMateriaNuevaNueva.setText("");
+        jtMateriaNuevaAnio.setText("");
+       
         
     }//GEN-LAST:event_btnMateriaNuevaLimpiarActionPerformed
 
@@ -316,6 +316,39 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private void btnMateriaUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaUpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMateriaUpActionPerformed
+
+    
+    //GUARDANDO MATERIA VISTA NUEVA MATERIA ------------------------------------------------
+    private void btnMateriaNuevaGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaNuevaGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        String materia = jtMateriaNuevaNueva.getText();
+        String year= jtMateriaNuevaAnio.getText();
+        
+        if (!materia.isEmpty()) {
+        if (!year.isEmpty()) {
+            
+            int yearParceado= Integer.parseInt(year);
+
+            Materia nuevaMateria = new Materia(materia,yearParceado, true);
+            
+            Menu.materiaEscritorio.guardarMateria(nuevaMateria);
+           // Menu.materiaEscritorio.actualizarMateria(nuevaMateria);
+           
+                        
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un año", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            }
+        
+        
+
+        
+        
+        
+    }//GEN-LAST:event_btnMateriaNuevaGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

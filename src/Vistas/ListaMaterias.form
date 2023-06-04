@@ -181,17 +181,11 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Activas"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jrbMateriasActivas.setBackground(new Color(0,0,0,0));"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jrbMateriasNoActivas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="No Activas"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jrbMateriasNoActivas.setBackground(new Color(0,0,0,0));"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

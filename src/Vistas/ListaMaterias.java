@@ -69,10 +69,8 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         jpEstadoMaterias.setBackground(new Color(0,0,0,0));
 
         jrbMateriasActivas.setText("Activas");
-        jrbMateriasActivas.setBackground(new Color(0,0,0,0));
 
         jrbMateriasNoActivas.setText("No Activas");
-        jrbMateriasNoActivas.setBackground(new Color(0,0,0,0));
 
         javax.swing.GroupLayout jpEstadoMateriasLayout = new javax.swing.GroupLayout(jpEstadoMaterias);
         jpEstadoMaterias.setLayout(jpEstadoMateriasLayout);
