@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -13,6 +14,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
 
     public ABMMaterias() {
         initComponents();
+        mostrandoMateriasV2();
     }
 
 
@@ -106,14 +108,19 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
                 .addComponent(jtMateriaNuevaAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(btnMateriaNuevaGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnMateriaNuevaLimpiar)
-                .addGap(38, 38, 38))
+                .addGap(32, 32, 32))
         );
 
         jtpMaterias.addTab("Nueva Materia", jpNuevaMateria);
 
         jcbMateriaBajaListaHab.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
+        jcbMateriaBajaListaHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaBajaListaHabActionPerformed(evt);
+            }
+        });
 
         btnMateriaBajaEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         btnMateriaBajaEliminar.setText("Borrar Registro");
@@ -287,7 +294,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnCerrarmaterias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtpMaterias, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addComponent(jtpMaterias)
                 .addGap(27, 27, 27))
         );
 
@@ -305,8 +312,14 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMateriaAltaHabilitarActionPerformed
 
+    //Solapa 2 - Baja Materia -> Da de baja una materia 
     private void btnMateriaBajaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaBajaEliminarActionPerformed
         // TODO add your handling code here:
+        List <Materia> arrayMateriasB =  Menu.materiaEscritorio.listarHabilitadas();
+        int posicion = jcbMateriaBajaListaHab.getSelectedIndex();
+        int idMateria = arrayMateriasB.get(posicion).getId_materia();
+        Menu.materiaEscritorio.deshabilitarMateria(idMateria);
+        mostrandoMateriasV2();
     }//GEN-LAST:event_btnMateriaBajaEliminarActionPerformed
 
     private void btnCerrarmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarmateriasActionPerformed
@@ -318,7 +331,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnMateriaUpActionPerformed
 
     
-    //GUARDANDO MATERIA VISTA NUEVA MATERIA ------------------------------------------------
+    //GUARDANDO MATERIA VISTA NUEVA MATERIA V1------------------------------------------------
     private void btnMateriaNuevaGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaNuevaGuardarActionPerformed
         // TODO add your handling code here:
         
@@ -341,14 +354,26 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
-            }
-        
-        
-
-        
-        
-        
+            } 
     }//GEN-LAST:event_btnMateriaNuevaGuardarActionPerformed
+
+    //Solapa 2 - Baja Materia -> Cargar Datos del furmulario Items ComboBox
+    private void jcbMateriaBajaListaHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaBajaListaHabActionPerformed
+        // TODO add your handling code here:
+        List <Materia> arrayMateriasB =  Menu.materiaEscritorio.listarHabilitadas();
+        int posicion = -1;
+        posicion= jcbMateriaBajaListaHab.getSelectedIndex();
+      
+        if (posicion > -1 ) {
+            jtMateriaBajaNombre.setText(arrayMateriasB.get(posicion).getNombre());
+            jtMateriaBajaAnio.setText(arrayMateriasB.get(posicion).getAnio() + "");
+            btnMateriaBajaEliminar.setEnabled(true);
+        }else if (posicion == -1){
+            JOptionPane.showMessageDialog(null, "No se encuentran materia para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
+        }
+     
+        
+    }//GEN-LAST:event_jcbMateriaBajaListaHabActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -359,7 +384,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnMateriaNuevaLimpiar;
     private javax.swing.JButton btnMateriaUp;
     private javax.swing.JComboBox<String> jcbMateriaAltaListaNoHab;
-    private javax.swing.JComboBox<String> jcbMateriaBajaListaHab;
+    private javax.swing.JComboBox<Materia> jcbMateriaBajaListaHab;
     private javax.swing.JComboBox<String> jcbMateriaUpEstado;
     private javax.swing.JComboBox<String> jcbMateriaUpMaterias;
     private javax.swing.JPanel jpActualizarDatosMateria;
@@ -376,4 +401,20 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtMateriaUpNombre;
     private javax.swing.JTabbedPane jtpMaterias;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrandoMateriasV2() {
+// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        jcbMateriaBajaListaHab.removeAllItems();
+        List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarHabilitadas();
+        btnMateriaBajaEliminar.setEnabled(false);
+        for (Materia alumno : arrayMaterias) {
+            jcbMateriaBajaListaHab.addItem(alumno);
+        }
+
+
+
+    }
+    
+    
 }

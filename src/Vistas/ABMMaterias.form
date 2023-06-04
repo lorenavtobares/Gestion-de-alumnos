@@ -36,7 +36,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="btnCerrarmaterias" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jtpMaterias" pref="382" max="32767" attributes="0"/>
+              <Component id="jtpMaterias" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -84,9 +84,9 @@
                       <Component id="jtMateriaNuevaAnio" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace pref="75" max="32767" attributes="0"/>
                       <Component id="btnMateriaNuevaGuardar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnMateriaNuevaLimpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -199,8 +199,11 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbMateriaBajaListaHabActionPerformed"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Materia&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnMateriaBajaEliminar">

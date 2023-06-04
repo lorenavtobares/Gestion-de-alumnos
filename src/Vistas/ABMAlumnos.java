@@ -597,9 +597,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
     //Solapa 1 - Alta de alumno -> btn Guargar registro
     private void btnAltaGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardar1ActionPerformed
-        
-        
-        
+
         String dni = jtDni1.getText();
         String apellido = jtApellido1.getText();
         String nombre = jtNombre1.getText();
