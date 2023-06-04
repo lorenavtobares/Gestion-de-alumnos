@@ -62,7 +62,7 @@ public class AlumnoData {
         
         String query    = "UPDATE alumno "
                         + "SET dni = ?, apellido = ? , nombre = ? , fecha_nacimiento = ?  "
-                        + "WHERE id_alumno = ?";
+                        + "WHERE dni = ?";
         
         try
         {
@@ -71,13 +71,10 @@ public class AlumnoData {
             stmt.setString( 2, alumno.getApellido() );
             stmt.setString( 3, alumno.getNombre() );
             stmt.setDate( 4, Date.valueOf( alumno.getFecha_nacimiento() ) );
-            stmt.setInt( 5, alumno.getId_alumno() );
+            stmt.setInt( 5, alumno.getDni() );
             
             stmt.executeUpdate();           
             JOptionPane.showMessageDialog(null, "Registro actualizado"," ",JOptionPane.INFORMATION_MESSAGE);
-           
-            
-            
             
         }
         catch ( SQLException ex )

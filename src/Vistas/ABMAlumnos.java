@@ -21,8 +21,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     public ABMAlumnos() {
         initComponents();
         formatoCalendario();
-        iconDniVerificado.setVisible(false);
-        iconDniError.setVisible(false);
+        inicializarIconosValidacion(false);
         cargandoAlumnoDeshabilitadoV2();
         cargandoAlumnoHabilitadoV3();
         cargandoAlumnosV4();
@@ -49,6 +48,10 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jdFechaNacimiento1 = new com.toedter.calendar.JDateChooser();
         iconDniVerificado = new javax.swing.JLabel();
         iconDniError = new javax.swing.JLabel();
+        iconApellidoVerificado = new javax.swing.JLabel();
+        iconApellidoError = new javax.swing.JLabel();
+        iconNombreVerificado = new javax.swing.JLabel();
+        iconNombreError = new javax.swing.JLabel();
         jpAltaAlumno = new javax.swing.JPanel(){
             public void paintComponent(Graphics grafico){
                 grafico.drawImage(image,0,0,getWidth(),getHeight(),this);
@@ -81,7 +84,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jtNombreUp4 = new javax.swing.JTextField();
         jdFechaNacimientoUp4 = new com.toedter.calendar.JDateChooser();
         btnAltaGuardarUp4 = new javax.swing.JButton();
-        jcbEstado4 = new javax.swing.JComboBox<>();
         jcbListaAlumnosUpDatos = new javax.swing.JComboBox<>();
         btnUpCerrar4 = new javax.swing.JButton();
 
@@ -104,16 +106,39 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         });
 
         jtDni1.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
+        jtDni1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDni1KeyTyped(evt);
+            }
+        });
 
         jtNombre1.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
+        jtNombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombre1KeyTyped(evt);
+            }
+        });
 
         jtApellido1.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
+        jtApellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtApellido1KeyTyped(evt);
+            }
+        });
 
         jdFechaNacimiento1.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE NACIMIENTO"));
 
         iconDniVerificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/verificado.png"))); // NOI18N
 
         iconDniError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/VerificadoNO.png"))); // NOI18N
+
+        iconApellidoVerificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/verificado.png"))); // NOI18N
+
+        iconApellidoError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/VerificadoNO.png"))); // NOI18N
+
+        iconNombreVerificado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/verificado.png"))); // NOI18N
+
+        iconNombreError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/VerificadoNO.png"))); // NOI18N
 
         javax.swing.GroupLayout jpNuevoAlumnoLayout = new javax.swing.GroupLayout(jpNuevoAlumno);
         jpNuevoAlumno.setLayout(jpNuevoAlumnoLayout);
@@ -129,29 +154,47 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(btnAltaGuardar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAltaLimpiar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6)
-                .addComponent(iconDniVerificado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconDniError)
+                .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
+                        .addComponent(iconDniVerificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(iconDniError))
+                    .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
+                        .addComponent(iconApellidoVerificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(iconApellidoError))
+                    .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
+                        .addComponent(iconNombreVerificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(iconNombreError)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jpNuevoAlumnoLayout.setVerticalGroup(
             jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNuevoAlumnoLayout.createSequentialGroup()
-                .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(iconDniVerificado)
-                            .addComponent(iconDniError)))
-                    .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jtDni1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(iconDniVerificado)
+                                    .addComponent(iconDniError))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jpNuevoAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(iconApellidoVerificado)
+                                    .addComponent(iconApellidoError)))
+                            .addGroup(jpNuevoAlumnoLayout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jtDni1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdFechaNacimiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iconNombreVerificado)
+                    .addComponent(iconNombreError))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jdFechaNacimiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(btnAltaGuardar1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -175,8 +218,9 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         jtNombreUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
         jdFechaNacimientoDelete2.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE NACIMIENTO"));
+        jdFechaNacimientoDelete2.setEnabled(false);
 
-        btnAltaGuardarUp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
+        btnAltaGuardarUp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/habilitar.png"))); // NOI18N
         btnAltaGuardarUp2.setText("Dar de alta");
         btnAltaGuardarUp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,15 +343,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbEstado4.setToolTipText("");
-        jcbEstado4.setBorder(javax.swing.BorderFactory.createTitledBorder("ESTADO"));
-        jcbEstado4.setName(""); // NOI18N
-        jcbEstado4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbEstado4ActionPerformed(evt);
-            }
-        });
-
         jcbListaAlumnosUpDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA ALUMNOS"));
         jcbListaAlumnosUpDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,14 +357,12 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             .addGroup(jpUpdateAlumnoLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jcbEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtApellidoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                            .addComponent(jtNombreUp4, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                            .addComponent(jtDniUp4)
-                            .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAltaGuardarUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jpUpdateAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jtApellidoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                        .addComponent(jtNombreUp4, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                        .addComponent(jtDniUp4)
+                        .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAltaGuardarUp4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jcbListaAlumnosUpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
@@ -346,11 +379,9 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jtNombreUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jdFechaNacimientoUp4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcbEstado4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(btnAltaGuardarUp4)
-                .addContainerGap())
+                .addGap(47, 47, 47))
         );
 
         jtpPanel.addTab("Actualizar Datos Personales", jpUpdateAlumno);
@@ -382,7 +413,16 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     //Solapa 2 - Alta de Alumno
+    private void inicializarIconosValidacion(boolean e){
+        iconDniVerificado.setVisible(e);
+        iconDniError.setVisible(e);
+        iconApellidoVerificado.setVisible(e);
+        iconApellidoError.setVisible(e);
+        iconNombreVerificado.setVisible(e);
+        iconNombreError.setVisible(e);
+    }
+    
+    //Solapa 2 - Alta de Alumno
     private void cargandoAlumnoDeshabilitadoV2() {
         jcbListaAlumnosDeshabilitados.removeAllItems();
         List <Alumno> arrayAlumnosD = Menu.alumnoEscritorio.listarDeshabilitados();
@@ -394,14 +434,13 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     //Solapa 2 - Alta de alumno -> guarda los cambios
     private void btnAltaGuardarUp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardarUp2ActionPerformed
             
-        
         String dni = jtDniUp2.getText();
-        int dniParceado = Integer.parseInt(dni);
         String apellido = jtApellidoUp2.getText();
         String nombre = jtNombreUp2.getText();
         LocalDate fechaNacimiento = jdFechaNacimientoDelete2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
+            
         if (!dni.isEmpty() ) {
+            int dniParceado = Integer.parseInt(dni);
            // iconDniVerificado.setVisible(true);
            // iconDniError.setVisible(false);
         if (!apellido.isEmpty()) {
@@ -420,8 +459,9 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 Menu.alumnoEscritorio.listarDeshabilitados();
                             
                 limparCamposVista2();
+                cargandoAlumnoDeshabilitadoV2();
+                cargandoAlumnoHabilitadoV3();
             }             
-            else { JOptionPane.showMessageDialog(null, "No hay más alumnos para dar de alta", "ERROR Validacion",JOptionPane.WARNING_MESSAGE); }                        
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
             jtNombreUp2.requestFocus(); }
@@ -432,7 +472,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar un documento", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
             //iconDniVerificado.setVisible(false);
             //iconDniError.setVisible(true);
-            jtDniUp2.requestFocus(); }
+            jtDniUp2.requestFocus(); }    
     }//GEN-LAST:event_btnAltaGuardarUp2ActionPerformed
 
     //Solapa 2 - Alta de alumno -> Limpiar Campos
@@ -451,41 +491,24 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         for (Alumno alumno : arrayAlumnos) {
             jcbListaAlumnosUpDatos.addItem(alumno);
         }
-        
-          jcbEstado4.addItem("Deshabilitado");
-          jcbEstado4.addItem("Habilitado");
           
     }
     
     //Solapa 4 - Actualizar Datos -> Btn guardar datos
     private void btnAltaGuardarUp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardarUp4ActionPerformed
         String dni = jtDniUp4.getText();
-        int dniParceado = Integer.parseInt(dni);
         String apellido = jtApellidoUp4.getText();
         String nombre = jtNombreUp4.getText();
         LocalDate fechaNacimiento = jdFechaNacimientoUp4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int estadoItem = -1;
-        estadoItem = jcbEstado4.getSelectedIndex();
         
         if (!dni.isEmpty()) {
-            iconDniVerificado.setVisible(true);
-            iconDniError.setVisible(false);
+            int dniParceado = Integer.parseInt(dni);
         if (!apellido.isEmpty()) {
         if (!nombre.isEmpty()) {
             
-            if(estadoItem != -1){
-                if(estadoItem == 0){
-                    Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, false);
-                    Menu.alumnoEscritorio.actualizarAlumno(estudiante);
-                    // Menu.alumnoEscritorio.guardarAlumno(estudiante);
-                } else {
-                    Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, true);
-                    Menu.alumnoEscritorio.actualizarAlumno(estudiante);
-                    // Menu.alumnoEscritorio.guardarAlumno(estudiante);
-                }  
-                           
-            } else { JOptionPane.showMessageDialog(null, "Debe seleccionar un estado", "ERROR Validacion",JOptionPane.WARNING_MESSAGE); }
-                        
+            Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento);
+            Menu.alumnoEscritorio.actualizarAlumno(estudiante);
+                            
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
             jtNombre1.requestFocus(); }
@@ -539,9 +562,9 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 Menu.alumnoEscritorio.actualizarAlumno(estudiante);
                 Menu.alumnoEscritorio.listarHabilitados();
                 Menu.alumnoEscritorio.listarDeshabilitados();
-                cargandoAlumnoHabilitadoV3() ;  
+                cargandoAlumnoHabilitadoV3();
+                cargandoAlumnoDeshabilitadoV2();
             }             
-            else { JOptionPane.showMessageDialog(null, "No hay más alumnos para dar de alta", "ERROR Validacion",JOptionPane.WARNING_MESSAGE); }
                 
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
@@ -575,26 +598,37 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     //Solapa 1 - Alta de alumno -> btn Guargar registro
     private void btnAltaGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaGuardar1ActionPerformed
         
+        
+        
         String dni = jtDni1.getText();
-        int dniParceado = Integer.parseInt(dni);
         String apellido = jtApellido1.getText();
         String nombre = jtNombre1.getText();
         LocalDate fechaNacimiento = jdFechaNacimiento1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         
         if (!dni.isEmpty()) {
+            int dniParceado = Integer.parseInt(dni);
             iconDniVerificado.setVisible(true);
             iconDniError.setVisible(false);
         if (!apellido.isEmpty()) {
+            iconApellidoVerificado.setVisible(true);
+            iconApellidoError.setVisible(false);
         if (!nombre.isEmpty()) {
+            iconNombreVerificado.setVisible(true);
+            iconNombreError.setVisible(false);
+            
             Alumno estudiante = new Alumno(dniParceado, apellido, nombre, fechaNacimiento, true);
             Menu.alumnoEscritorio.guardarAlumno(estudiante);
             Menu.alumnoEscritorio.actualizarAlumno(estudiante);
                         
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            iconNombreVerificado.setVisible(false);
+            iconNombreError.setVisible(true);
             jtNombre1.requestFocus(); }
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un apellido", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            iconApellidoVerificado.setVisible(false);
+            iconApellidoError.setVisible(true);
             jtApellido1.requestFocus(); }
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un documento", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
@@ -604,11 +638,7 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAltaGuardar1ActionPerformed
 
-   
-    private void jcbEstado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstado4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbEstado4ActionPerformed
-    
+       
     //Solapa 2 - Alta de alumno -> Cargar Datos del furmulario Items ComboBox
     private void jcbListaAlumnosDeshabilitadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosDeshabilitadosActionPerformed
         List<Alumno> arrayAlumnosD = Menu.alumnoEscritorio.listarDeshabilitados();
@@ -619,8 +649,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             jtApellidoUp2.setText(arrayAlumnosD.get(posicion).getApellido());
             jtDniUp2.setText(arrayAlumnosD.get(posicion).getDni() + "");
             jdFechaNacimientoDelete2.setDateFormatString(arrayAlumnosD.get(posicion).getFecha_nacimiento() + "");
-        }else if (posicion == -1){
-            JOptionPane.showMessageDialog(null, "No se encuentran alumno para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
         }
         
     }//GEN-LAST:event_jcbListaAlumnosDeshabilitadosActionPerformed
@@ -635,8 +663,6 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             jtApellidoUp3.setText(arrayAlumnosA.get(posicion).getApellido());
             jtDniUp3.setText(arrayAlumnosA.get(posicion).getDni() + "");
             jdFechaNacimientoDelete3.setDateFormatString(arrayAlumnosA.get(posicion).getFecha_nacimiento() + "");
-        }else if (posicion == -1){
-            JOptionPane.showMessageDialog(null, "No se encuentran alumno para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
         }
     }//GEN-LAST:event_jcbListaAlumnosHabilitadosActionPerformed
 
@@ -654,7 +680,50 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "No se encuentran alumno para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
         }
     }//GEN-LAST:event_jcbListaAlumnosUpDatosActionPerformed
+    
+    //Solapa 1 - Alta de alumno / Apellido -> Validacion de solo letras
+    private void jtApellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellido1KeyTyped
+        int key = evt.getKeyChar();
 
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+            
+        if (!(minusculas || mayusculas || espacio))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtApellido1KeyTyped
+    
+    //Solapa 1 - Alta de alumno / Nombre -> Validacion de solo letras
+    private void jtNombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombre1KeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+            
+        if (!(minusculas || mayusculas || espacio))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtNombre1KeyTyped
+
+    //Solapa 1 - Alta de alumno / DNI -> Validacion de solo letras
+    private void jtDni1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDni1KeyTyped
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        
+        if (!numeros)
+        {
+            evt.consume();
+        }
+
+        if (jtDni1.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtDni1KeyTyped
+    
     
     public void formatoCalendario(){
         //jdFechaNacimiento.setLocale(new Locale("es"));
@@ -676,10 +745,13 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAltaGuardarUp4;
     private javax.swing.JButton btnAltaLimpiar1;
     private javax.swing.JButton btnUpCerrar4;
+    private javax.swing.JLabel iconApellidoError;
+    private javax.swing.JLabel iconApellidoVerificado;
     private javax.swing.JLabel iconDniError;
     private javax.swing.JLabel iconDniVerificado;
+    private javax.swing.JLabel iconNombreError;
+    private javax.swing.JLabel iconNombreVerificado;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JComboBox<String> jcbEstado4;
     private javax.swing.JComboBox<Alumno> jcbListaAlumnosDeshabilitados;
     private javax.swing.JComboBox<Alumno> jcbListaAlumnosHabilitados;
     private javax.swing.JComboBox<Alumno> jcbListaAlumnosUpDatos;
