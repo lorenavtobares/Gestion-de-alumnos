@@ -15,6 +15,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     public ABMMaterias() {
         initComponents();
         mostrandoMateriasV2();
+        mostrandoTodasMateriasV3();
     }
 
 
@@ -172,6 +173,11 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         jtMateriaUpAnio.setBorder(javax.swing.BorderFactory.createTitledBorder("AÑO"));
 
         jcbMateriaUpMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
+        jcbMateriaUpMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaUpMateriasActionPerformed(evt);
+            }
+        });
 
         jtMateriaUpNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
@@ -325,9 +331,42 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private void btnCerrarmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarmateriasActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarmateriasActionPerformed
-
+     //Solapa 3 - Actualizar Materia -> Actualiza una materia 
     private void btnMateriaUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaUpActionPerformed
         // TODO add your handling code here:
+        List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarTodasLasMaterias();
+        int posicion = -1;
+        posicion= jcbMateriaUpMaterias.getSelectedIndex();
+       
+        String nombre = jtMateriaUpNombre.getText();
+        String year = jtMateriaUpAnio.getText();
+        int posicionEstado = jcbMateriaUpEstado.getSelectedIndex();
+        
+     
+        if (!year.isEmpty()) {
+            int yearParceado = Integer.parseInt(year);
+        if (!nombre.isEmpty()) {
+            
+            if(posicionEstado == 0) {
+            Materia materiaActualizada = new Materia(nombre, yearParceado,true );
+            Menu.materiaEscritorio.actualizarMateria(materiaActualizada);
+            
+            }else{
+            
+            Materia materiaActualizada = new Materia(nombre, yearParceado,false );
+            Menu.materiaEscritorio.actualizarMateria(materiaActualizada);}
+                            
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            //jtNombre1.requestFocus(); 
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un año", "ERROR Validacion",JOptionPane.WARNING_MESSAGE);
+            //jtApellido1.requestFocus(); 
+        }
+                                                  
+
+        
     }//GEN-LAST:event_btnMateriaUpActionPerformed
 
     
@@ -368,12 +407,62 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
             jtMateriaBajaNombre.setText(arrayMateriasB.get(posicion).getNombre());
             jtMateriaBajaAnio.setText(arrayMateriasB.get(posicion).getAnio() + "");
             btnMateriaBajaEliminar.setEnabled(true);
+        }   
+    }//GEN-LAST:event_jcbMateriaBajaListaHabActionPerformed
+
+    private void mostrandoMateriasV2() {
+// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        jcbMateriaBajaListaHab.removeAllItems();
+        List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarHabilitadas();
+        btnMateriaBajaEliminar.setEnabled(false);
+        for (Materia alumno : arrayMaterias) {
+            jcbMateriaBajaListaHab.addItem(alumno);
+        }
+
+
+
+    }
+
+
+     private void mostrandoTodasMateriasV3() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       jcbMateriaBajaListaHab.removeAllItems();
+       List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarTodasLasMaterias();
+        
+        for (Materia alumno : arrayMaterias) {
+            jcbMateriaUpMaterias.addItem(alumno);
+        }
+    
+     }
+
+//Solapa 3 - Actualizar Materia -> Cargar Datos del furmulario Items ComboBox
+    private void jcbMateriaUpMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaUpMateriasActionPerformed
+        // TODO add your handling code here:
+        List <Materia> arrayTodasMaterias =  Menu.materiaEscritorio.listarTodasLasMaterias();
+        int posicion = -1;
+        posicion= jcbMateriaUpMaterias.getSelectedIndex();
+        boolean estado = arrayTodasMaterias.get(posicion).getEstado();
+        if (posicion > -1 ) {
+            jtMateriaUpNombre.setText(arrayTodasMaterias.get(posicion).getNombre());
+            jtMateriaUpAnio.setText(arrayTodasMaterias.get(posicion).getAnio() + "");
+           
+            if(estado == false){
+                jcbMateriaUpEstado.setSelectedIndex(1);
+            } else{
+                jcbMateriaUpEstado.setSelectedIndex(0) ;
+            }
+            
+            
         }else if (posicion == -1){
             JOptionPane.showMessageDialog(null, "No se encuentran materia para dar de alta", "",JOptionPane.WARNING_MESSAGE); 
         }
-     
         
-    }//GEN-LAST:event_jcbMateriaBajaListaHabActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_jcbMateriaUpMateriasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -386,7 +475,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbMateriaAltaListaNoHab;
     private javax.swing.JComboBox<Materia> jcbMateriaBajaListaHab;
     private javax.swing.JComboBox<String> jcbMateriaUpEstado;
-    private javax.swing.JComboBox<String> jcbMateriaUpMaterias;
+    private javax.swing.JComboBox<Materia> jcbMateriaUpMaterias;
     private javax.swing.JPanel jpActualizarDatosMateria;
     private javax.swing.JPanel jpAltaMateria;
     private javax.swing.JPanel jpBajaMateria;
@@ -402,19 +491,13 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jtpMaterias;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrandoMateriasV2() {
-// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
-        jcbMateriaBajaListaHab.removeAllItems();
-        List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarHabilitadas();
-        btnMateriaBajaEliminar.setEnabled(false);
-        for (Materia alumno : arrayMaterias) {
-            jcbMateriaBajaListaHab.addItem(alumno);
-        }
 
-
-
-    }
-    
-    
+   
 }
+
+
+    
+    
+    
+

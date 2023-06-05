@@ -191,7 +191,7 @@ public class MateriaData {
                 materiaN.setId_materia(resultado.getInt("id_materia"));
                 materiaN.setNombre(resultado.getString("nombre"));
                 materiaN.setAnio(resultado.getInt("anio"));
-                
+                 materiaN.setEstado(true);
                 array_materias.add(materiaN);
             }
         }
@@ -255,6 +255,7 @@ public class MateriaData {
                 materiaN.setId_materia(resultado.getInt("id_materia"));
                 materiaN.setNombre(resultado.getString("nombre"));
                 materiaN.setAnio(resultado.getInt("anio"));
+                materiaN.setEstado(false);
                 
                 array_materiasD.add(materiaN);
             }
