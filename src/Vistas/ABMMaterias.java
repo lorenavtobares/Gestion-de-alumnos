@@ -16,6 +16,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         initComponents();
         mostrandoMateriasV2();
         mostrandoTodasMateriasV3();
+        mostrarMateriasV4();
     }
 
 
@@ -231,6 +232,11 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         jtpMaterias.addTab("Actualizar datos", jpActualizarDatosMateria);
 
         jcbMateriaAltaListaNoHab.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA DE MATERIAS"));
+        jcbMateriaAltaListaNoHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriaAltaListaNoHabActionPerformed(evt);
+            }
+        });
 
         jtMateriaAltaNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
@@ -313,19 +319,30 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
        
         
     }//GEN-LAST:event_btnMateriaNuevaLimpiarActionPerformed
-
+    //Solapa 4 - Alta de Materia -> Da de alta una materia 
     private void btnMateriaAltaHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaAltaHabilitarActionPerformed
         // TODO add your handling code here:
+         
+
+        List <Materia> arrayMateriasD =  Menu.materiaEscritorio.listarDeshabilitadas();
+        int posicion = jcbMateriaAltaListaNoHab.getSelectedIndex();
+        int idMateria = arrayMateriasD.get(posicion).getId_materia();
+        Menu.materiaEscritorio.habilitarMateria(idMateria);
+        mostrarMateriasV4();
+        
     }//GEN-LAST:event_btnMateriaAltaHabilitarActionPerformed
 
     //Solapa 2 - Baja Materia -> Da de baja una materia 
     private void btnMateriaBajaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaBajaEliminarActionPerformed
         // TODO add your handling code here:
-        List <Materia> arrayMateriasB =  Menu.materiaEscritorio.listarHabilitadas();
+      
+        List <Materia> arrayMateriasH =  Menu.materiaEscritorio.listarHabilitadas();
         int posicion = jcbMateriaBajaListaHab.getSelectedIndex();
-        int idMateria = arrayMateriasB.get(posicion).getId_materia();
+        int idMateria = arrayMateriasH.get(posicion).getId_materia();
         Menu.materiaEscritorio.deshabilitarMateria(idMateria);
-        mostrandoMateriasV2();
+         mostrandoMateriasV2();
+     
+      
     }//GEN-LAST:event_btnMateriaBajaEliminarActionPerformed
 
     private void btnCerrarmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarmateriasActionPerformed
@@ -415,7 +432,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     
         jcbMateriaBajaListaHab.removeAllItems();
         List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarHabilitadas();
-        btnMateriaBajaEliminar.setEnabled(false);
+        
         for (Materia alumno : arrayMaterias) {
             jcbMateriaBajaListaHab.addItem(alumno);
         }
@@ -427,7 +444,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
 
      private void mostrandoTodasMateriasV3() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       jcbMateriaBajaListaHab.removeAllItems();
+       jcbMateriaUpMaterias.removeAllItems();
        List <Materia> arrayMaterias =  Menu.materiaEscritorio.listarTodasLasMaterias();
         
         for (Materia alumno : arrayMaterias) {
@@ -464,6 +481,25 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jcbMateriaUpMateriasActionPerformed
 
+    
+    //Solapa 4 - Alta de Materia -> Cargar Datos del furmulario Items ComboBox
+    private void jcbMateriaAltaListaNoHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriaAltaListaNoHabActionPerformed
+        // TODO add your handling code here:.
+        
+        List <Materia> arrayMateriasD =  Menu.materiaEscritorio.listarDeshabilitadas();
+        int posicion =jcbMateriaAltaListaNoHab.getSelectedIndex();
+      
+       
+            jtMateriaAltaNombre.setText(arrayMateriasD.get(posicion).getNombre());
+            jtMateriaAltaAnio.setText(arrayMateriasD.get(posicion).getAnio() + "");
+          
+         
+        
+        
+        
+        
+    }//GEN-LAST:event_jcbMateriaAltaListaNoHabActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarmaterias;
@@ -472,7 +508,7 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnMateriaNuevaGuardar;
     private javax.swing.JButton btnMateriaNuevaLimpiar;
     private javax.swing.JButton btnMateriaUp;
-    private javax.swing.JComboBox<String> jcbMateriaAltaListaNoHab;
+    private javax.swing.JComboBox<Materia> jcbMateriaAltaListaNoHab;
     private javax.swing.JComboBox<Materia> jcbMateriaBajaListaHab;
     private javax.swing.JComboBox<String> jcbMateriaUpEstado;
     private javax.swing.JComboBox<Materia> jcbMateriaUpMaterias;
@@ -490,6 +526,17 @@ public class ABMMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtMateriaUpNombre;
     private javax.swing.JTabbedPane jtpMaterias;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrarMateriasV4() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jcbMateriaAltaListaNoHab.removeAllItems();
+        List <Materia> arrayMateriasD =  Menu.materiaEscritorio.listarDeshabilitadas();
+        
+        for (Materia materias : arrayMateriasD) {
+            jcbMateriaAltaListaNoHab.addItem(materias);
+        }
+    
+    }
 
     
 
