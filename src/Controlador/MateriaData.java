@@ -54,15 +54,14 @@ public class MateriaData {
     public void actualizarMateria ( Materia materia ){
         PreparedStatement stmt = null;
         String query    = "UPDATE materia "
-                        + "SET nombre = ? , anio = ? , estado = ? "
+                        + "SET nombre = ? , anio = ? "
                         + "WHERE id_materia = ?";
         
         try{
             stmt = con.prepareStatement( query );
             stmt.setString( 1, materia.getNombre() );
             stmt.setInt( 2, materia.getAnio() );
-            stmt.setBoolean( 3, materia.getEstado() );
-            stmt.setInt( 4, materia.getId_materia() );
+            stmt.setInt( 3, materia.getId_materia() );
             
             stmt.executeUpdate();
             
@@ -209,7 +208,7 @@ public class MateriaData {
         return array_materias;
     }
     
-     public void deshabilitarMateria ( int id_materia ){
+    public void deshabilitarMateria ( int id_materia ){
         PreparedStatement stmt = null;
         String query    = "UPDATE materia "
                         + "SET estado = false "
@@ -220,7 +219,7 @@ public class MateriaData {
             stmt = con.prepareStatement( query );
             stmt.setInt( 1, id_materia);
             
-            if(stmt.executeUpdate() < 1){
+            if(stmt.executeUpdate() > 0){
                 JOptionPane.showMessageDialog(null, "Materia deshabilitada ", "", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(null, "ID ingresado incorrecto", "", JOptionPane.ERROR_MESSAGE);
@@ -277,22 +276,41 @@ public class MateriaData {
     
      //se agrego
     public List <Materia> listarTodasLasMaterias ( ) { //COMPROBADO
-
         ArrayList <Materia> array_materias = new ArrayList();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
         
-        array_materias.addAll(listarHabilitadas());
-        array_materias.addAll(listarDeshabilitadas());
+        String query    = "SELECT id_materia, nombre, anio, estado "
+                        + "FROM materia "
+                        + "ORDER BY nombre";
         
+        try{
+            stmt = con.prepareStatement( query );
+            resultado = stmt.executeQuery();
+            
+            while ( resultado.next() ) 
+            {
+                Materia materiaN = new Materia();
+                materiaN.setId_materia(resultado.getInt("id_materia"));
+                materiaN.setNombre(resultado.getString("nombre"));
+                materiaN.setAnio(resultado.getInt("anio"));
+                materiaN.setEstado(resultado.getBoolean("estado"));
+                
+                array_materias.add(materiaN);
+            }
+        }
+        catch ( SQLException ex ){
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        }finally {
+            try {  
+                resultado.close();
+                stmt.close(); 
+            }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }        
         
         
         return array_materias;
-        
-        
-    
-    }  
-    
-    
-    
-    
-    
+    }   
 }
