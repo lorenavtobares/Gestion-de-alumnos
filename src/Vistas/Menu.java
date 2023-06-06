@@ -139,8 +139,8 @@ public class Menu extends javax.swing.JFrame {
         
         if ( form.rolSesion.equals("alumno") ){
 
-            Menu_Alumnos.add(A_opcion2);
             Menu_Alumnos.add(A_opcion3);
+            Menu_Alumnos.add(A_opcion2);
             Menu_Salir.add("Usuario: " + form.usuarioSesion);
             Menu_Salir.add("Perfil: " + form.rolSesion);
             Menu_Salir.add(S_opcion1);

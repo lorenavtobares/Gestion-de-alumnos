@@ -1,18 +1,23 @@
 package Vistas;
 
-import Modelo.Materia;
+import Controlador.*;
+import Modelo.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaMaterias extends javax.swing.JInternalFrame {
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private MateriaData materia = new MateriaData();
     
     public ListaMaterias() {
         initComponents();
+        armarCabecera();
     }
 
 
@@ -69,8 +74,18 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         jpEstadoMaterias.setBackground(new Color(0,0,0,0));
 
         jrbMateriasActivas.setText("Activas");
+        jrbMateriasActivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMateriasActivasActionPerformed(evt);
+            }
+        });
 
         jrbMateriasNoActivas.setText("No Activas");
+        jrbMateriasNoActivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMateriasNoActivasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpEstadoMateriasLayout = new javax.swing.GroupLayout(jpEstadoMaterias);
         jpEstadoMaterias.setLayout(jpEstadoMateriasLayout);
@@ -120,7 +135,8 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jpEstadoMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,8 +157,60 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+    
+    //Radio Buttons
+    private void jrbMateriasActivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasActivasActionPerformed
+        jrbMateriasActivas.setSelected(true);
+        jrbMateriasNoActivas.setSelected(false);
+        llenarTabla();
+    }//GEN-LAST:event_jrbMateriasActivasActionPerformed
 
+    private void jrbMateriasNoActivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoActivasActionPerformed
+        jrbMateriasActivas.setSelected(false);
+        jrbMateriasNoActivas.setSelected(true);
+        llenarTabla();
+    }//GEN-LAST:event_jrbMateriasNoActivasActionPerformed
 
+    //Cabecera Tabla
+    private void armarCabecera() {
+        ArrayList<Object> titulos=new ArrayList<>();
+        titulos.add("Nombre");
+        titulos.add("Año");
+        
+        for(Object tit:titulos){
+            modelo.addColumn(tit);
+        }
+        tablaMostrar.setModel(modelo);
+    }
+
+    //Llenar Tabla
+    private void llenarTabla(){
+        borrarFilas();
+        if ( jrbMateriasActivas.isSelected() ){
+            List <Materia> materiasActivas = materia.listarMateriasHabilitadas();
+            
+            for(Materia m : materiasActivas){
+                modelo.addRow(new Object[]{ m.getNombre(), m.getAnio() });
+            }
+        }else{
+            List <Materia> materiasNOActivas = materia.listarMateriasNOHabilitadas();
+            
+            for(Materia m : materiasNOActivas){
+                modelo.addRow(new Object[]{ m.getNombre(), m.getAnio() });
+            }
+        }
+    }
+    
+    //Limpiar Tabla
+    private void borrarFilas(){
+    
+        int filas=modelo.getRowCount()-1;
+        for(int i=filas;i >=0;i--){
+        
+            modelo.removeRow(i);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JPanel jPanel1;
