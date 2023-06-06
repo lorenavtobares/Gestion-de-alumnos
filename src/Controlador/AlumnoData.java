@@ -275,6 +275,7 @@ public class AlumnoData {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         List<Alumno> list_alumnosD = new ArrayList<Alumno>();
+        
         String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
                         + "FROM alumno "
                         + "WHERE estado = 0";
@@ -304,28 +305,45 @@ public class AlumnoData {
             catch ( SQLException ex )
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
-        
-       
-        
-        
-        
         return list_alumnosD;
     }
     
     //se agrego
     public List <Alumno> listarTodosAlumnos ( ) { //COMPROBADO
-
         ArrayList <Alumno> array_alumnos = new ArrayList();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
         
-        array_alumnos.addAll(listarHabilitados());
-        array_alumnos.addAll(listarDeshabilitados());
+        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+                        + "FROM alumno "
+                        + "ORDER BY apellido";
         
-        
-        
+        try
+        {
+            stmt = con.prepareStatement( query );
+            resultado = stmt.executeQuery();
+            
+            while ( resultado.next() ) 
+            {
+                Alumno alumnoM = new Alumno();
+                alumnoM.setId_alumno( resultado.getInt("id_alumno"));
+                alumnoM.setDni(resultado.getInt("dni"));
+                alumnoM.setApellido(resultado.getString("apellido"));
+                alumnoM.setNombre(resultado.getString("nombre"));
+                alumnoM.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());    
+                array_alumnos.add(alumnoM);
+            }   
+        }
+        catch ( SQLException ex ) 
+        {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "" , JOptionPane.ERROR_MESSAGE);
+        }
+        finally {
+            try { stmt.close(); }
+            catch ( SQLException ex )
+            { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
+        }
         return array_alumnos;
-        
-        
-    
     }  
     
 }

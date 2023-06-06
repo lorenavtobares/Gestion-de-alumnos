@@ -14,6 +14,7 @@ public class InscripcionData {
     private static Materia materia = new Materia();
     private static MateriaData materiaData = new MateriaData();
     
+    
     public InscripcionData (){
         con = Conexion.getConexion();
     }
@@ -66,39 +67,31 @@ public class InscripcionData {
     } // inscribirAlumno() 
     
     /*<-- READ -->*/
-    public void listarInscripciones( ) {
+    public List<Inscripcion> listarInscripciones( ) {
+        List <Inscripcion> array_Inscripciones= new ArrayList<Inscripcion>();
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        List <Inscripcion> array_Inscripciones= new ArrayList<Inscripcion>();
-        String query    = "SELECT a.dni , a.apellido, a.nombre, m.nombre AS nombreMateria "
+        
+        String query    = "SELECT i.id_inscripcion , i.nota , i.id_alumno , i.id_materia "
                         + "FROM inscripcion AS i "
                         + "JOIN alumno AS a "
                         + "ON a.id_alumno = i.id_alumno "
                         + "JOIN materia AS m "
                         + "ON m.id_materia = i.id_materia "
                         + "ORDER BY a.dni";
-        
-        
-        try
-        {    
+        try{    
             stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
-
-            System.out.println("\n-------------------------------------------------------------------------------------");
-            System.out.printf("%-20s %-20s %-20s %-20s", "DNI", "APELLIDO", "NOMBRE", "MATERIA");
-            System.out.println("\n-------------------------------------------------------------------------------------");
             
             while ( resultado.next() ) 
             {
-                String dni = String.valueOf(resultado.getInt("dni"));
-                String apellido = resultado.getString("apellido");
-                String nombre = resultado.getString("nombre");
-                String nombreMateria = resultado.getString("nombreMateria");
-                
-                System.out.format("%-20s %-20s %-20s %-20s", dni , apellido , nombre , nombreMateria);
-                System.out.println();
+                int id = resultado.getInt("id_inscripcion");
+                double nota = resultado.getDouble("nota");
+                alumno = regenerarAlumno(resultado.getInt("id_alumno"));
+                materia = regenerarMateria(resultado.getInt("id_materia"));
+                Inscripcion inscripcion = new Inscripcion(id, nota, alumno, materia);
+                array_Inscripciones.add(inscripcion);
             }
-            System.out.println("\n-------------------------------------------------------------------------------------");
         } catch ( SQLException ex ) {
             JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() ,"" , JOptionPane.ERROR_MESSAGE);
         }
@@ -111,46 +104,39 @@ public class InscripcionData {
             }
         }
         
-        
-    } // listarInscripciones()
+        return array_Inscripciones;
+    } // listarInscripciones()    
     
-    public void  buscarInscripcionesDNIsuario ( int dniAlumno ) {
+    public List<Inscripcion> listarInscripcionesDNIsuario ( int dniAlumno ) {
+        List <Inscripcion> array_Inscripciones= new ArrayList<Inscripcion>();
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        int contador=0;
+        
         List <String> arrayMateriasInscriptas = new ArrayList ();
-        String query    = "SELECT a.dni , a.apellido, a.nombre, m.nombre AS nombreMateria "
+        String query    = "SELECT i.id_inscripcion , i.nota , i.id_alumno , i.id_materia "
                         + "FROM inscripcion AS i "
                         + "JOIN alumno AS a "
                         + "ON i.id_alumno = a.id_alumno "
                         + "JOIN materia AS m "
                         + "ON i.id_materia = m.id_materia "
-                        + "WHERE a.dni = ? "
-                        + "ORDER BY a.dni"; //ordena
+                        + "WHERE i.id_alumno = ? "
+                        + "ORDER BY m.nombre"; //ordena
         
-        try
-        {    
+        try{    
             stmt = con.prepareStatement( query );
             stmt.setInt( 1, dniAlumno );
-            
             resultado = stmt.executeQuery();
             
             while ( resultado.next() ) 
             {
-                
-                contador++;
-                String dni = String.valueOf( resultado.getInt( "dni" ) );
-                String apellido = resultado.getString( "apellido" );
-                String nombre = resultado.getString( "nombre" );
-                String nombreMateria = resultado.getString( "nombreMateria" );
-                
-                
-               
-                
-                
+                int id = resultado.getInt("id_inscripcion");
+                double nota = resultado.getDouble("nota");
+                alumno = regenerarAlumno(resultado.getInt("id_alumno"));
+                materia = regenerarMateria(resultado.getInt("id_materia"));
+                Inscripcion inscripcion = new Inscripcion(id, nota, alumno, materia);
+                array_Inscripciones.add(inscripcion);
             }
            
-            
         } catch ( SQLException ex ) {
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
         }
@@ -162,8 +148,57 @@ public class InscripcionData {
                 JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
             }
         }
+        return array_Inscripciones;
+    } //listarInscripcionesDNIsuario ()
     
-    } //buscarInscripcionID ()
+    public List<Materia> listarNOInscripcionesDNIsuario ( int idInscripto ) {
+        List <Materia> array_materias = new ArrayList<Materia>();
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        
+        List <String> arrayMateriasInscriptas = new ArrayList ();
+        String query    = "SELECT materia.id_materia, materia.nombre, materia.anio "
+                        + "FROM materia "
+                        + "WHERE materia.id_materia "
+                        + "NOT IN( "
+                            + "SELECT i.id_materia "
+                            + "FROM inscripcion AS i "
+                            + "JOIN alumno AS a "
+                            + "ON i.id_alumno = a.id_alumno "
+                            + "JOIN materia AS m "
+                            + "ON i.id_materia = m.id_materia "
+                            + "WHERE i.id_alumno = ? "
+                        + ")"
+                        + "ORDER BY materia.nombre";
+        
+        try
+        {    
+            stmt = con.prepareStatement( query );
+            stmt.setInt( 1, idInscripto );
+            resultado = stmt.executeQuery();
+            
+            while ( resultado.next() ) 
+            {
+                int id = resultado.getInt("id_materia");
+                String nombre = resultado.getString("nombre");
+                int anio = resultado.getInt("anio");
+                Materia materia = new Materia(id, nombre, anio);
+                array_materias.add(materia);
+            }
+           
+        } catch ( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
+        }
+        finally {
+            try {
+                resultado.close();
+                stmt.close();
+            } catch ( SQLException ex ) {
+                JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() ,"", JOptionPane.ERROR_MESSAGE );
+            }
+        }
+        return array_materias;
+    } //listarInscripcionesDNIsuario ()
        
     public void buscarInscripcionIDMateria ( int idMateria ) {
         PreparedStatement stmt = null;
@@ -214,47 +249,33 @@ public class InscripcionData {
     
     } //buscarInscripcionID ()
     
-    public List <Inscripcion> listaCursada(){
-        List <Inscripcion> listaInscripciones = new ArrayList <Inscripcion> ();
-        PreparedStatement stmt = null;  
+    public List <Materia> listarCursadaDni (int idAlumno) {
+        List<Materia> listaMateria = new ArrayList <Materia> ();
+        PreparedStatement stmt = null;
         ResultSet resultado = null;
-        String query =  "SELECT * FROM inscripcion";
+        String query    = "SELECT id_materia FROM inscripcion "
+                        + "WHERE id_alumno = ?";
         
-        try
-        {
+        try{
+            stmt.setInt(1, idAlumno );
+            
             stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
-            Inscripcion inscricion;
             
-            while ( resultado.next() )
-            {
-                inscricion = new Inscripcion();
-                inscricion.setId_inscripto( resultado.getInt("id_inscripcion") );
-                
-                Alumno alumno = regenerarAlumno( resultado.getInt("id_alumno") );
-                inscricion.setAlumno(alumno);
-                
-                Materia materia = regenerarMateria( resultado.getInt("id_materia") );
-                inscricion.setMateria(materia);
-                
-                inscricion.setNota( resultado.getDouble("nota") );
-                
-                listaInscripciones.add(inscricion);
+            while ( resultado.next() ){
+                Materia m = new Materia();
+                m = regenerarMateria(resultado.getInt("id_materia"));
+                listaMateria.add(m);
             }
-            
-        } catch ( SQLException ex ) {
+        
+        }catch( SQLException ex ){
             JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
-        } finally  {
-            try  {
-                resultado.close();
-                stmt.close();
-            } catch  ( SQLException ex ) {
-                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
-            }
         }
-        return listaInscripciones;
+        
+        
+        return listaMateria;
     }
-
+    
     /*<-- UPDATE -->*/
     public void actualizarNotaID( int id_inscripcion, double nota ){
         PreparedStatement stmt = null;
