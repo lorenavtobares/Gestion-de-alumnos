@@ -249,7 +249,8 @@ public class InscripcionData {
     
     } //buscarInscripcionID ()
     
-    public List <Materia> listarCursadaDni (int idAlumno) {
+    //chequeo--------------------------------------------------------------------------------
+    public List <Materia> listarCursadaIDAlumno (int idAlumno) {
         List<Materia> listaMateria = new ArrayList <Materia> ();
         PreparedStatement stmt = null;
         ResultSet resultado = null;

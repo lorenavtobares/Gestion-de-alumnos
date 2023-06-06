@@ -1,6 +1,8 @@
-
 package Vistas;
+
 import Modelo.Alumno;
+import Modelo.Inscripcion;
+import Modelo.Materia;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,29 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
-
 public class Calificaciones extends javax.swing.JInternalFrame {
-    
+    private int idAlumno = -1;
     public Calificaciones() {
         initComponents();
-        botonTransparente(btnCerrar);    
+        botonTransparente(btnCerrar);
         panelFormularios(jpFondo, 800, 450);
         cargandoAlumnos();
     }
 
-    
-        
-    void panelFormularios(JPanel p, int ancho, int alto){
-       p.setSize(ancho, alto);
+    void panelFormularios(JPanel p, int ancho, int alto) {
+        p.setSize(ancho, alto);
     }
-    
-    void botonTransparente(javax.swing.JButton b){
+
+    void botonTransparente(javax.swing.JButton b) {
         b.setFocusPainted(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
     }
-    
-       
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -60,12 +58,16 @@ public class Calificaciones extends javax.swing.JInternalFrame {
         });
 
         jcbListaAlumnos.setBorder(javax.swing.BorderFactory.createTitledBorder("ALUMNOS"));
+        jcbListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbListaAlumnosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/clasificaciones.png"))); // NOI18N
         jLabel1.setText("Registro de Clasificaciones");
 
-        jcbListaMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbListaMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIAS"));
 
         jtNota.setBorder(javax.swing.BorderFactory.createTitledBorder("NOTA"));
@@ -129,24 +131,49 @@ public class Calificaciones extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed
+        // TODO add your handling code here:
+
+        List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
+
+        int posicion = -1;
+        posicion = jcbListaAlumnos.getSelectedIndex();
+
+        if (posicion > -1) {
+             idAlumno = arrayAlumnos.get(posicion).getId_alumno();
+             cargandoMaterias();
+        }
+
+
+    }//GEN-LAST:event_jcbListaAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<Alumno> jcbListaAlumnos;
-    private javax.swing.JComboBox<String> jcbListaMaterias;
+    private javax.swing.JComboBox<Materia> jcbListaMaterias;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JTextField jtNota;
     // End of variables declaration//GEN-END:variables
 
     private void cargandoAlumnos() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        List <Alumno> arrayAlumnos = (List<Alumno>) Menu.alumnoEscritorio.listarTodosAlumnos();
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
         for (Alumno alumno : arrayAlumnos) {
             jcbListaAlumnos.addItem(alumno);
-        } 
-    
+        }
+
     }
+    
+    private void cargandoMaterias(){
+        List<Materia> arrayMateria = Menu.inscripcionEscritorio.listarCursadaIDAlumno(idAlumno);
+            
+            for (Materia materia : arrayMateria) {
+                jcbListaMaterias.addItem(materia);
+            }
+    }
+    
 }
