@@ -18,6 +18,7 @@ public class Calificaciones extends javax.swing.JInternalFrame {
         botonTransparente(btnCerrar);
         panelFormularios(jpFondo, 800, 450);
         cargandoAlumnos();
+        cargandoMaterias();
     }
 
     void panelFormularios(JPanel p, int ancho, int alto) {
@@ -46,7 +47,7 @@ public class Calificaciones extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jcbListaMaterias = new javax.swing.JComboBox<>();
         jtNota = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnGuardarClasificacion = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 450));
 
@@ -72,9 +73,14 @@ public class Calificaciones extends javax.swing.JInternalFrame {
 
         jtNota.setBorder(javax.swing.BorderFactory.createTitledBorder("NOTA"));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar.png"))); // NOI18N
-        jButton1.setText("Guardar Nota");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar.png"))); // NOI18N
+        btnGuardarClasificacion.setText("Guardar Nota");
+        btnGuardarClasificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarClasificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
         jpFondo.setLayout(jpFondoLayout);
@@ -91,7 +97,7 @@ public class Calificaciones extends javax.swing.JInternalFrame {
                     .addComponent(jtNota)
                     .addComponent(jcbListaMaterias, 0, 458, Short.MAX_VALUE)
                     .addComponent(jcbListaAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGuardarClasificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpFondoLayout.setVerticalGroup(
@@ -109,7 +115,7 @@ public class Calificaciones extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jtNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 67, Short.MAX_VALUE))
         );
 
@@ -130,10 +136,17 @@ public class Calificaciones extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
-
+    
+    //ComboBox Alumnos
+    private void cargandoAlumnos() {
+        List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
+        
+        for (Alumno alumno : arrayAlumnos) {
+            jcbListaAlumnos.addItem(alumno);
+        }
+    }
+    
     private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed
-        // TODO add your handling code here:
-
         List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
 
         int posicion = -1;
@@ -141,16 +154,28 @@ public class Calificaciones extends javax.swing.JInternalFrame {
 
         if (posicion > -1) {
              idAlumno = arrayAlumnos.get(posicion).getId_alumno();
-             cargandoMaterias();
         }
-
-
+        cargandoMaterias();
     }//GEN-LAST:event_jcbListaAlumnosActionPerformed
 
+    private void btnGuardarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClasificacionActionPerformed
+        
+    }//GEN-LAST:event_btnGuardarClasificacionActionPerformed
+
+    //ComboBox Materias
+    private void cargandoMaterias(){
+        jcbListaMaterias.removeAllItems();
+        List<Materia> materiasCursadas = new ArrayList<Materia>();
+        materiasCursadas = Menu.inscripcionEscritorio.listarCursadaIDAlumno(idAlumno);
+        
+        for (Materia materia : materiasCursadas) {
+            jcbListaMaterias.addItem(materia);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnGuardarClasificacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<Alumno> jcbListaAlumnos;
     private javax.swing.JComboBox<Materia> jcbListaMaterias;
@@ -158,22 +183,4 @@ public class Calificaciones extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtNota;
     // End of variables declaration//GEN-END:variables
 
-    private void cargandoAlumnos() {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-        List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
-        for (Alumno alumno : arrayAlumnos) {
-            jcbListaAlumnos.addItem(alumno);
-        }
-
-    }
-    
-    private void cargandoMaterias(){
-        List<Materia> arrayMateria = Menu.inscripcionEscritorio.listarCursadaIDAlumno(idAlumno);
-            
-            for (Materia materia : arrayMateria) {
-                jcbListaMaterias.addItem(materia);
-            }
-    }
-    
 }

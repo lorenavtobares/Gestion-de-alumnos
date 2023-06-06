@@ -95,7 +95,7 @@ public class AlumnoData {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         
-        String query    = "SELECT dni, apellido, nombre, fecha_nacimiento, estado "
+        String query    = "SELECT * "
                         + "FROM alumno "
                         + "WHERE id_alumno = ?";
         

@@ -82,7 +82,7 @@ public class MateriaData {
         ResultSet resultado = null;
         Materia materiaN = null;
         
-        String query    = "SELECT nombre, anio, estado "
+        String query    = "SELECT * "
                         + "FROM materia "
                         + "WHERE id_materia = ?";
         
@@ -91,14 +91,13 @@ public class MateriaData {
             stmt.setInt( 1, id_materia );
             resultado = stmt.executeQuery();
             
-            if( resultado.next() )
-            {
+            if( resultado.next() ) {
                 materiaN = new Materia();
                 materiaN.setId_materia ( id_materia );
                 materiaN.setNombre(resultado.getString( "nombre" ));
                 materiaN.setAnio(resultado.getInt( "anio" ));
                 materiaN.setEstado(resultado.getBoolean( "estado" ));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No se encontro la materia selecionada", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -115,7 +114,7 @@ public class MateriaData {
         
         return materiaN;
     }//.buscarMateria()
-    
+     
     public void eliminarMateria ( int id_materia ){
         PreparedStatement stmt = null;
         String query    = "UPDATE materia "
@@ -310,9 +309,7 @@ public class MateriaData {
             }
             catch ( SQLException ex )
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
-        }        
-        
-        
+        }
         return array_materias;
     }   
 }

@@ -204,27 +204,21 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
 
         jtpPanel.addTab("Nuevo Alumno", jpNuevoAlumno);
 
-        jpAltaAlumno.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jcbListaAlumnosDeshabilitados.setBorder(javax.swing.BorderFactory.createTitledBorder("LISTA ALUMNOS"));
         jcbListaAlumnosDeshabilitados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbListaAlumnosDeshabilitadosActionPerformed(evt);
             }
         });
-        jpAltaAlumno.add(jcbListaAlumnosDeshabilitados, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 41, 553, 60));
 
         jtApellidoUp2.setEditable(false);
         jtApellidoUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
-        jpAltaAlumno.add(jtApellidoUp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 181, 553, 50));
 
         jtNombreUp2.setEditable(false);
         jtNombreUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
-        jpAltaAlumno.add(jtNombreUp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 249, 553, 50));
 
         jdFechaNacimientoDelete2.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE NACIMIENTO"));
         jdFechaNacimientoDelete2.setEnabled(false);
-        jpAltaAlumno.add(jdFechaNacimientoDelete2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 311, 553, 60));
 
         btnAltaGuardarUp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/habilitar.png"))); // NOI18N
         btnAltaGuardarUp2.setText("Dar de alta");
@@ -233,11 +227,40 @@ public class ABMAlumnos extends javax.swing.JInternalFrame {
                 btnAltaGuardarUp2ActionPerformed(evt);
             }
         });
-        jpAltaAlumno.add(btnAltaGuardarUp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 411, 553, -1));
 
         jtDniUp2.setEditable(false);
         jtDniUp2.setBorder(javax.swing.BorderFactory.createTitledBorder("DNI"));
-        jpAltaAlumno.add(jtDniUp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 113, 553, 50));
+
+        javax.swing.GroupLayout jpAltaAlumnoLayout = new javax.swing.GroupLayout(jpAltaAlumno);
+        jpAltaAlumno.setLayout(jpAltaAlumnoLayout);
+        jpAltaAlumnoLayout.setHorizontalGroup(
+            jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaAlumnoLayout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbListaAlumnosDeshabilitados, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtDniUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtApellidoUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtNombreUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdFechaNacimientoDelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAltaGuardarUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jpAltaAlumnoLayout.setVerticalGroup(
+            jpAltaAlumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAltaAlumnoLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jcbListaAlumnosDeshabilitados, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jtDniUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtApellidoUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtNombreUp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jdFechaNacimientoDelete2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnAltaGuardarUp2))
+        );
 
         jtpPanel.addTab("Alta de Alumno", jpAltaAlumno);
 

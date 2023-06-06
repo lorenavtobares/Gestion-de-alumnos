@@ -249,18 +249,20 @@ public class InscripcionData {
     
     } //buscarInscripcionID ()
     
-    //chequeo--------------------------------------------------------------------------------
+    //chequeo----------------------------------
     public List <Materia> listarCursadaIDAlumno (int idAlumno) {
         List<Materia> listaMateria = new ArrayList <Materia> ();
         PreparedStatement stmt = null;
         ResultSet resultado = null;
-        String query    = "SELECT id_materia FROM inscripcion "
+        
+        String query    = "SELECT id_materia "
+                        + "FROM inscripcion "
                         + "WHERE id_alumno = ?";
         
         try{
+            stmt = con.prepareStatement( query );
             stmt.setInt(1, idAlumno );
             
-            stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
             
             while ( resultado.next() ){
