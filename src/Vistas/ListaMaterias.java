@@ -1,4 +1,4 @@
-package Vistas;
+ package Vistas;
 
 import Controlador.*;
 import Modelo.*;
@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaMaterias extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
-    private MateriaData materia = new MateriaData();
     
     public ListaMaterias() {
         initComponents();
@@ -173,7 +172,7 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
 
     //Cabecera Tabla
     private void armarCabecera() {
-        ArrayList<Object> titulos=new ArrayList<>();
+        ArrayList<Object> titulos = new ArrayList<>();
         titulos.add("Nombre");
         titulos.add("Año");
         
@@ -187,13 +186,13 @@ public class ListaMaterias extends javax.swing.JInternalFrame {
     private void llenarTabla(){
         borrarFilas();
         if ( jrbMateriasActivas.isSelected() ){
-            List <Materia> materiasActivas = materia.listarMateriasHabilitadas();
+            List <Materia> materiasActivas = Menu.materiaEscritorio.listarMateriasHabilitadas();
             
             for(Materia m : materiasActivas){
                 modelo.addRow(new Object[]{ m.getNombre(), m.getAnio() });
             }
         }else{
-            List <Materia> materiasNOActivas = materia.listarMateriasNOHabilitadas();
+            List <Materia> materiasNOActivas = Menu.materiaEscritorio.listarMateriasNOHabilitadas();
             
             for(Materia m : materiasNOActivas){
                 modelo.addRow(new Object[]{ m.getNombre(), m.getAnio() });

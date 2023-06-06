@@ -1,15 +1,18 @@
 package Vistas;
 
-import Modelo.Alumno;
-import Modelo.Materia;
+import Modelo.*;
+import Controlador.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-public class InscripcionesMaterias extends javax.swing.JInternalFrame {
 
+public class InscripcionesMaterias extends javax.swing.JInternalFrame {
+    private int idAlumno = -1;
+    private int idMateria = -1;
 
     public InscripcionesMaterias() {
         initComponents();
@@ -41,11 +44,26 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
         jpFondo.setSize(800, 450);
 
         jcAlumnos.setBorder(javax.swing.BorderFactory.createTitledBorder("ALUMNO"));
+        jcAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcAlumnosActionPerformed(evt);
+            }
+        });
 
         jcMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIA"));
+        jcMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcMateriasActionPerformed(evt);
+            }
+        });
 
         btnInscribir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar.png"))); // NOI18N
         btnInscribir.setText("Realizar Inscripcion");
+        btnInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscribirActionPerformed(evt);
+            }
+        });
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
         btnCerrar.setBorder(null);
@@ -109,14 +127,67 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Boton Cerrar
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    void panelFormularios(JPanel p, int ancho, int alto){
-       p.setSize(ancho, alto);
-    }
+    // Guargar inscripcion
+    private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
+        InscripcionData inscripcionData = Menu.inscripcionEscritorio;
+        Alumno alumno = new Alumno();
+        Materia materia = new Materia();
+        
+        //Reconstruyendo 
+        alumno = Menu.alumnoEscritorio.buscarAlumno(idAlumno);
+        materia = Menu.materiaEscritorio.buscarMateria(idMateria);
+        
+        Inscripcion inscripcion = new Inscripcion(0, alumno, materia);
+        
+        inscripcionData.inscribirAlumno(inscripcion);
+        
+    }//GEN-LAST:event_btnInscribirActionPerformed
+
+    // Obtener ID Alumno - Materia ComboBox
+    private void jcAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAlumnosActionPerformed
+        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
+        int posicion = -1;
+        posicion = jcAlumnos.getSelectedIndex();
+        
+        if ( posicion > -1){
+            idAlumno = arrayAlumnosA.get(posicion).getId_alumno();
+        }
+    }//GEN-LAST:event_jcAlumnosActionPerformed
+
+    private void jcMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMateriasActionPerformed
+        List<Materia> arrayMaterias = Menu.materiaEscritorio.listarTodasLasMaterias();
+        int posicion = -1;
+        posicion = jcMaterias.getSelectedIndex();
+        
+        if( posicion > -1 ){
+            idMateria =  arrayMaterias.get(posicion).getId_materia();
+        }
+    }//GEN-LAST:event_jcMateriasActionPerformed
     
+    //ComboBox alumnos
+    private void cargandoAlumnos() {
+        jcAlumnos.removeAllItems();
+        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
+        
+        for (Alumno alumno : arrayAlumnosA) {
+            jcAlumnos.addItem(alumno);
+        }
+    }
+
+    private void cargandoMaterias() {
+        jcMaterias.removeAllItems();
+        List<Materia> arrayMaterias = Menu.materiaEscritorio.listarTodasLasMaterias();
+        
+        for (Materia alumno : arrayMaterias) {
+            jcMaterias.addItem(alumno);
+        }
+    }
+
     void botonTransparente(javax.swing.JButton b){
         b.setFocusPainted(false);
         b.setBorderPainted(false);
@@ -132,28 +203,4 @@ public class InscripcionesMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 
-    private void cargandoAlumnos() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-         jcAlumnos.removeAllItems();
-        List<Alumno> arrayAlumnosA = Menu.alumnoEscritorio.listarHabilitados();
-        
-        for (Alumno alumno : arrayAlumnosA) {
-            jcAlumnos.addItem(alumno);
-        } 
-    
-    
-    
-    }
-
-    private void cargandoMaterias() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        jcMaterias.removeAllItems();
-        List<Materia> arrayMaterias = Menu.materiaEscritorio.listarTodasLasMaterias();
-        
-        for (Materia alumno : arrayMaterias) {
-            jcMaterias.addItem(alumno);
-        } 
-    
-    
-    }
 }

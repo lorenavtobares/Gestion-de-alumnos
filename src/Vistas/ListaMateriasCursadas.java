@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
-    private InscripcionData inscData = new InscripcionData();
     private int dniAlumnoSeleccionado = -1;
     private int idAlumnoSeleccionado = -1;
     
@@ -223,13 +222,13 @@ public class ListaMateriasCursadas extends javax.swing.JInternalFrame {
     private void llenarTabla(){
         borrarFilas();
         if ( jrbInscriptos.isSelected() ){
-            List <Inscripcion> listaInscriptos = inscData.listarInscripcionesDNIsuario(idAlumnoSeleccionado);
+            List <Inscripcion> listaInscriptos = Menu.inscripcionEscritorio.listarInscripcionesDNIsuario(idAlumnoSeleccionado);
             
             for(Inscripcion m : listaInscriptos){
                 modelo.addRow(new Object[]{ m.getMateria().getNombre(), m.getMateria().getAnio() });
             }
         }else{
-            List <Materia> listaNoInscriptos = inscData.listarNOInscripcionesDNIsuario(idAlumnoSeleccionado);
+            List <Materia> listaNoInscriptos = Menu.inscripcionEscritorio.listarNOInscripcionesDNIsuario(idAlumnoSeleccionado);
         
             for(Materia m : listaNoInscriptos){
                 modelo.addRow(new Object[]{ m.getNombre(), m.getAnio() });

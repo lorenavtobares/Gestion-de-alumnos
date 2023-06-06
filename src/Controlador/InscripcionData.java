@@ -19,18 +19,18 @@ public class InscripcionData {
         con = Conexion.getConexion();
     }
 
-    private Alumno regenerarAlumno ( int idAlumno ){
+    public Alumno regenerarAlumno ( int idAlumno ){
         alumno = alumnoData.buscarAlumno(idAlumno);
         return alumno;
     }
     
-    private Materia regenerarMateria ( int idMateria ){
+    public Materia regenerarMateria ( int idMateria ){
         materia = materiaData.buscarMateria(idMateria);
         return materia;
     }
     
     /*<-- CREATE -->*/
-    public void inscribirAlumno(Alumno alumno, Materia materia, Inscripcion inscripcion){
+    public void inscribirAlumno(Inscripcion inscripcion){
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         
@@ -40,9 +40,9 @@ public class InscripcionData {
         try
         {
             stmt = con.prepareStatement( query, Statement.RETURN_GENERATED_KEYS );
-            stmt.setDouble(1, inscripcion.getNota() );
-            stmt.setInt(2, alumno.getId_alumno() );
-            stmt.setInt(3, materia.getId_materia() );
+            stmt.setDouble(1, inscripcion.getId_inscripto() );
+            stmt.setInt(2, inscripcion.getAlumno().getId_alumno() );
+            stmt.setInt(3, inscripcion.getMateria().getId_materia() );
             
             stmt.executeUpdate();
             resultado = stmt.getGeneratedKeys();

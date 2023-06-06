@@ -89,13 +89,7 @@ public class AlumnoData {
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
     }//.actualizarAlumno()
-    
-    
-    
-    
-    
-    
-    
+       
     public Alumno buscarAlumno ( int idAlumno ){
         Alumno alumnoN = null;
         PreparedStatement stmt = null;
@@ -203,12 +197,12 @@ public class AlumnoData {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         List<Alumno> list_alumnos = new ArrayList<Alumno>(); // se agregp
-        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+        String query    = "SELECT * "
                         + "FROM alumno "
-                        + "WHERE estado = 1";
+                        + "WHERE estado = 1 "
+                        + "ORDER BY alumno.apellido ";
         
-        try
-        {
+        try{
             stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
             
@@ -220,7 +214,6 @@ public class AlumnoData {
                 alumnoN.setApellido(resultado.getString("apellido"));
                 alumnoN.setNombre(resultado.getString("nombre"));
                 alumnoN.setFecha_nacimiento(resultado.getDate("fecha_nacimiento").toLocalDate());
-                alumnoN.setEstado(true); // se agrego
                 list_alumnos.add(alumnoN);
             }   
         }
@@ -233,11 +226,6 @@ public class AlumnoData {
             catch ( SQLException ex )
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
-        
-        
-       
-        
-        
         return list_alumnos;
     }
     
@@ -268,17 +256,16 @@ public class AlumnoData {
         }
         
     }//.deshabilitadosAlumno()
-
-    
-    //se agrego este metodo
+  
     public List <Alumno> listarDeshabilitados ( ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         List<Alumno> list_alumnosD = new ArrayList<Alumno>();
         
-        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+        String query    = "SELECT * "
                         + "FROM alumno "
-                        + "WHERE estado = 0";
+                        + "WHERE estado = 0 "
+                        + "ORDER BY alumno.apellido";
         
         try
         {
@@ -308,18 +295,16 @@ public class AlumnoData {
         return list_alumnosD;
     }
     
-    //se agrego
     public List <Alumno> listarTodosAlumnos ( ) { //COMPROBADO
         ArrayList <Alumno> array_alumnos = new ArrayList();
         PreparedStatement stmt = null;
         ResultSet resultado = null;
         
-        String query    = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento "
+        String query    = "SELECT * "
                         + "FROM alumno "
-                        + "ORDER BY apellido";
+                        + "ORDER BY alumno.apellido";
         
-        try
-        {
+        try{
             stmt = con.prepareStatement( query );
             resultado = stmt.executeQuery();
             
