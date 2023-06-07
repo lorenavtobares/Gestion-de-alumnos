@@ -311,5 +311,5 @@ public class MateriaData {
             { JOptionPane.showMessageDialog( null, "ERROR : " + ex.getMessage(), " " , JOptionPane.ERROR_MESSAGE ); }
         }
         return array_materias;
-    }   
+    }
 }

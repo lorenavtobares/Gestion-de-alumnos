@@ -200,18 +200,15 @@ public class InscripcionData {
         return array_materias;
     } //listarInscripcionesDNIsuario ()
        
-    public void buscarInscripcionIDMateria ( int idMateria ) {
+    public List <Alumno> buscarInscripcionIDMateria ( int idMateria ) {
         PreparedStatement stmt = null;
         ResultSet resultado = null;
+        List <Alumno> listaAlumnos= new ArrayList<Alumno>();
         
-        String query    = "SELECT a.dni , a.apellido, a.nombre, m.nombre AS nombreMateria "
-                        + "FROM inscripcion AS i "
-                        + "JOIN alumno AS a "
-                        + "ON i.id_alumno = a.id_alumno "
-                        + "JOIN materia AS m "
-                        + "ON i.id_materia = m.id_materia "
-                        + "WHERE i.id_materia = ? "
-                        + "ORDER BY a.dni";
+         String query   = "SELECT id_alumno "
+                        + "FROM inscripcion "
+                        + "WHERE id_materia = ?";
+        
         
         try
         {
@@ -219,22 +216,14 @@ public class InscripcionData {
             stmt.setInt( 1, idMateria );
 
             resultado = stmt.executeQuery();
-            
-            System.out.println("\n-------------------------------------------------------------------------------------");
-            System.out.printf("%-20s %-20s %-20s %-20s", "DNI", "APELLIDO", "NOMBRE", "MATERIA");
-            System.out.println("\n-------------------------------------------------------------------------------------");
-            
+         
             while ( resultado.next() ) 
             {
-                String dni = String.valueOf(resultado.getInt("dni"));
-                String apellido = resultado.getString("apellido");
-                String nombre = resultado.getString("nombre");
-                String nombreMateria = resultado.getString("nombreMateria");
-                
-                System.out.format("%-20s %-20s %-20s %-20s", dni , apellido , nombre , nombreMateria);
-                System.out.println();
+                Alumno a = new Alumno();
+                a = regenerarAlumno(resultado.getInt("id_alumno"));
+                listaAlumnos.add(a);
             }
-            System.out.println("\n-------------------------------------------------------------------------------------");
+            
             
         } catch ( SQLException ex ) {
             JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
@@ -246,8 +235,49 @@ public class InscripcionData {
                 JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
             }
         }
-    
+        return listaAlumnos;
     } //buscarInscripcionID ()
+    public List<Alumno> buscarNoInscripcionIdmateria(int idMateria){
+        PreparedStatement stmt= null;
+        ResultSet resultado=null;
+        List<Alumno> listaAlumnos=new ArrayList<Alumno>();
+        
+        String query    = "SELECT alumno.id_alumno " +
+                           "FROM alumno " +
+                           "WHERE alumno.id_alumno NOT IN (SELECT i.id_alumno " +
+                           "FROM inscripcion AS i " +
+                           "JOIN alumno AS a " +
+                           "ON i.id_alumno=a.id_alumno " +
+                           "JOIN materia AS m " +
+                           "ON i.id_materia=m.id_materia " +
+                           "WHERE i.id_materia = ?)";
+        
+        try{
+            stmt=con.prepareStatement(query);
+            stmt.setInt(1, idMateria);
+            
+            resultado= stmt.executeQuery();
+            
+            while (resultado.next()) {
+                Alumno a = new Alumno();
+                a = regenerarAlumno(resultado.getInt("id_alumno"));
+                listaAlumnos.add(a);
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+        }
+        finally{
+            try  {
+                resultado.close();
+                stmt.close();
+            } catch  ( SQLException ex ) {
+                JOptionPane.showMessageDialog( null, "ERROR: " + ex.getMessage() , "", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        return listaAlumnos;
+    }
     
     //chequeo----------------------------------
     public List <Materia> listarCursadaIDAlumno (int idAlumno) {

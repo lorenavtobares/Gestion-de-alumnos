@@ -1,16 +1,26 @@
 package Vistas;
 
+import Modelo.Alumno;
+import Modelo.Inscripcion;
 import Modelo.Materia;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo=new DefaultTableModel();
+    private int idMateriaSeleccionada=-1;
 
     public ListaInscripcionesAMaterias() {
         initComponents();
         botonTransparente(btnCerrar);
+        cargandoMaterias();
+        armarCabecera();
+        llenartabla();
     }
 
 
@@ -51,9 +61,16 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
                 "Apellido", "Nombre", "DNI"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -66,6 +83,11 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         jLabel2.setText("Ficha Mostrar Todos los Alumnos inscripto a una Materia");
 
         jcMaterias.setBorder(javax.swing.BorderFactory.createTitledBorder("MATERIA"));
+        jcMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcMateriasActionPerformed(evt);
+            }
+        });
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar.png"))); // NOI18N
         btnCerrar.setBorder(null);
@@ -80,10 +102,18 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         jpEstado.setBackground(new Color(0,0,0,0));
 
         jrbNoInscriptos.setText("No Inscriptos");
-        jrbNoInscriptos.setBackground(new Color(0,0,0,0));
+        jrbNoInscriptos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNoInscriptosActionPerformed(evt);
+            }
+        });
 
         jrbInscriptos.setText("Inscriptos");
-        jrbInscriptos.setBackground(new Color(0,0,0,0));
+        jrbInscriptos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbInscriptosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpEstadoLayout = new javax.swing.GroupLayout(jpEstado);
         jpEstado.setLayout(jpEstadoLayout);
@@ -111,29 +141,26 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         jpFondoLayout.setHorizontalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
+                .addGap(182, 182, 182)
                 .addComponent(jLabel2)
-                .addGap(148, 148, 148)
+                .addGap(126, 126, 126)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jpFondoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(22, 22, 22)
                 .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(jpEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +186,75 @@ public class ListaInscripcionesAMaterias extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void jrbInscriptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInscriptosActionPerformed
+        // TODO add your handling code here:
+        jrbInscriptos.setSelected(true);
+        jrbNoInscriptos.setSelected(false);
+        llenartabla();
+    }//GEN-LAST:event_jrbInscriptosActionPerformed
 
+    private void jrbNoInscriptosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoInscriptosActionPerformed
+        // TODO add your handling code here:
+        jrbInscriptos.setSelected(false);
+        jrbNoInscriptos.setSelected(true);
+        llenartabla();
+
+    }//GEN-LAST:event_jrbNoInscriptosActionPerformed
+
+    private void jcMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMateriasActionPerformed
+        // TODO add your handling code here:
+        
+        List<Materia> arrayMaterias= Menu.materiaEscritorio.listarMateriasHabilitadas();
+        int posicion=-1;
+        posicion=jcMaterias.getSelectedIndex();
+        if(posicion>-1){
+            idMateriaSeleccionada=arrayMaterias.get(posicion).getId_materia();
+            
+        }
+    }//GEN-LAST:event_jcMateriasActionPerformed
+
+    
+    private void cargandoMaterias(){
+        jcMaterias.removeAllItems();
+        List<Materia> ArrayMaterias = Menu.materiaEscritorio.listarTodasLasMaterias();
+        for (Materia ArrayMateria : ArrayMaterias) {
+            jcMaterias.addItem(ArrayMateria);
+        }
+    }
+    
+    private void armarCabecera(){
+        ArrayList<Object> titulos=new ArrayList<>();
+        titulos.add("Apellido");
+        titulos.add("Nombre");
+        titulos.add("Dni");
+        for (Object titulo : titulos) {
+            modelo.addColumn(titulo);
+        }
+        tablaMostrar.setModel(modelo);
+    }
+    
+    private void llenartabla(){
+        borrarFilas();
+        if(jrbInscriptos.isSelected()){
+            List<Alumno> listaInscriptos=Menu.inscripcionEscritorio.buscarInscripcionIDMateria(idMateriaSeleccionada);
+            for (Alumno m : listaInscriptos) {
+                modelo.addRow(new Object[]{m.getApellido(),m.getNombre(),m.getDni()});
+            }
+        }else{
+            List<Alumno>listaNoInscriptos=Menu.inscripcionEscritorio.buscarNoInscripcionIdmateria(idMateriaSeleccionada);
+            for (Alumno listaNoInscripto : listaNoInscriptos) {
+                modelo.addRow(new Object[]{listaNoInscripto.getApellido(),listaNoInscripto.getNombre(),listaNoInscripto.getDni()});
+            }
+        }
+    }
+    
+     private void borrarFilas(){
+        int filas=modelo.getRowCount()-1;
+        for(int i=filas;i >=0;i--){
+            modelo.removeRow(i);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel2;
