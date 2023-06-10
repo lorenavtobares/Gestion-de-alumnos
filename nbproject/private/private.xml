@@ -7,13 +7,12 @@
             <file>file:/C:/Laboratorio1/ProyectoTransversal_Grupo11/src/Vistas/Calificaciones.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/ListaMaterias.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Modelo/Alumno.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/InscripcionData.java</file>
             <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/ABMAlumnos.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/ABMMaterias.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/AlumnoData.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Controlador/MateriaData.java</file>
-            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/Menu.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Modelo/Inscripcion.java</file>
             <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Vistas/Calificaciones.java</file>
+            <file>file:/C:/Users/loren/OneDrive/Documentos/GitHub/ProyectoTransversal_Grupo11/src/Modelo/Materia.java</file>
         </group>
     </open-files>
 </project-private>

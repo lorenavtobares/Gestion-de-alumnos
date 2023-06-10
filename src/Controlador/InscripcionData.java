@@ -279,7 +279,7 @@ public class InscripcionData {
         return listaAlumnos;
     }
     
-    //chequeo----------------------------------
+    
     public List <Materia> listarCursadaIDAlumno (int idAlumno) {
         List<Materia> listaMateria = new ArrayList <Materia> ();
         PreparedStatement stmt = null;
@@ -309,7 +309,7 @@ public class InscripcionData {
         return listaMateria;
     }
     
-    /*<-- UPDATE -->*/
+    /*<-- UPDATE -->*/ 
     public void actualizarNotaID( int id_inscripcion, double nota ){
         PreparedStatement stmt = null;
         
@@ -335,7 +335,9 @@ public class InscripcionData {
                 JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             }
         }
-    } // actualizarMateriaID()
+    } // actualizarMateriaID() 
+    
+    
     
     /*<-- DELETE -->*/
     public void eliminarInscripcion ( int id_inscripcion){

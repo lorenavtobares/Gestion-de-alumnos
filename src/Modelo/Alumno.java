@@ -35,6 +35,7 @@ public class Alumno {
             this.fecha_nacimiento = fecha_nacimiento;
         }
 
+        
         public Alumno() {
         }
 

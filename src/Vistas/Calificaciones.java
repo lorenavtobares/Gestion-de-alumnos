@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -159,7 +160,31 @@ public class Calificaciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbListaAlumnosActionPerformed
 
     private void btnGuardarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClasificacionActionPerformed
+        int posicionAlum = -1 , posicionMateria =-1;
         
+         posicionAlum = jcbListaAlumnos.getSelectedIndex();
+         posicionMateria = jcbListaMaterias.getSelectedIndex();
+         String nota = jtNota.getText();
+         double notaParceada = Double.parseDouble(nota);
+         
+         List<Materia> materiasCursadas = Menu.inscripcionEscritorio.listarCursadaIDAlumno(idAlumno);
+         List<Alumno> arrayAlumnos = Menu.alumnoEscritorio.listarHabilitados();
+         List<Inscripcion> arrayInscripcion = Menu.inscripcionEscritorio.listarInscripciones();
+      
+         int id_alumno = arrayAlumnos.get(posicionAlum).getId_alumno();
+         int id_materia = materiasCursadas.get(posicionMateria).getId_materia();
+         
+         for(int i =0 ; i < arrayInscripcion.size() ; i++){
+           
+             if(arrayInscripcion.get(i).getAlumno().getId_alumno() == id_alumno){
+                if(arrayInscripcion.get(i).getMateria().getId_materia() == id_materia){
+                    int idInscripcion = arrayInscripcion.get(i).getId_inscripto();
+                     Menu.inscripcionEscritorio.actualizarNotaID(idInscripcion,  notaParceada);
+                }
+             }
+             
+         }
+         
     }//GEN-LAST:event_btnGuardarClasificacionActionPerformed
 
     //ComboBox Materias

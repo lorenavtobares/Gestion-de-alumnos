@@ -20,6 +20,11 @@ public class Inscripcion {
             this.materia = materia;
         }
 
+        public Inscripcion(Alumno alumno, Materia materia) { 
+            this.alumno = alumno;
+            this.materia = materia;
+        }
+        
         public Inscripcion() {
         }
 
@@ -56,5 +61,14 @@ public class Inscripcion {
         public Materia getMateria() {
             return materia;
         }
-    
+
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "id_inscripto=" + id_inscripto + ", nota=" + nota + ", alumno=" + alumno + ", materia=" + materia + '}';
+    }
+ 
+        
+        
+        
+        
 }
